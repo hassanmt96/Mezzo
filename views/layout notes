@@ -3,6 +3,7 @@ layout.pug
 nav bar
     logo
     search
+    upgrade button
     user icon
         dropdown:
         create story
@@ -19,8 +20,27 @@ footer
 index.pug
 homepage
 
+Logged Out User
+
 extend layout
     flexbox/grid layout
     body
         div
             for each story preview
+
+Logged In User
+
+extend layout
+    flexbox/grid layout
+    body
+        div
+            for each story preview
+            should have: img, title, subtitle, author, createdAt
+        div
+            header Following
+            (column) following: profile icons
+            name under profile icon
+
+        div
+            header Topics
+            (in same column as following) categories
