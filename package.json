@@ -8,6 +8,7 @@
     "start:production": "node ./bin/www"
   },
   "dependencies": {
+    "connect-session-sequelize": "^7.0.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

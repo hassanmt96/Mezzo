@@ -16,7 +16,9 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next)=> {
   res.render(req.user);
 }));
 
-
+router.get('/login', asyncHandler(async (req, res, next) => {
+  res.render('session')
+}))
 
 
 
@@ -25,6 +27,6 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next)=> {
 module.exports = router;
 
 
-//LOGIN & SIGNUP ROUTES GO HERE 
+//LOGIN & SIGNUP ROUTES GO HERE
 
 //delete user route
