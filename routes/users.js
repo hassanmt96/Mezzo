@@ -17,8 +17,9 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next)=> {
 }));
 
 router.get('/login', asyncHandler(async (req, res, next) => {
-  res.render('session')
-}))
+  // res.render('session')
+  res.send('this is a test message!')
+}));
 
 
 
