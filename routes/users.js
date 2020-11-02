@@ -50,6 +50,24 @@ const userValidators = [
     }),
 ];
 
+const loginValidator = [
+  check('email')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide your email')
+    .custom((value) => {
+      return db.User.findOne({
+        where: { email: value }
+      })
+    })
+    .then((user) => {
+      if (!user) {
+        return Promise.reject('This email is not being used by an account')
+      }
+    }),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide your password')
+]
 
 
 /* GET users listing. */
