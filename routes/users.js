@@ -1,9 +1,30 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const { check } = require('express-validator');
+const { User } = require('../db/models')
+const { asyncHandler } = require('../utils')
+const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next)=> {
   res.send('respond with a resource');
 });
 
+
+//getting user by id
+router.get('/:id(\\d+)', asyncHandler(async(req, res, next)=> {
+  const user = await User.findByPk(req.params.id)
+  res.render(req.user);
+}));
+
+
+
+
+
+
+
 module.exports = router;
+
+
+//LOGIN & SIGNUP ROUTES GO HERE 
+
+//delete user route

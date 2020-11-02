@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require("dotenv").config();
+const session = require('express-session');
+const { sessionSecret } = require('./config')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -16,7 +18,15 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(sessionSecret));
+app.use(session({
+  name: 'mezzo.sid',
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false,
+}))
+//app.use(storyRoutes)
+//app.use(userRoutes)
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
