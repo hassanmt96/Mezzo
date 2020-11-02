@@ -17,12 +17,19 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next)=> {
 }));
 
 router.get('/login', asyncHandler(async (req, res, next) => {
-  // res.render('session')
-  res.send('this is a test message!')
+  res.render('testlogin')
+  // res.send('this is a test message!')
 }));
 
 
+router.post('/login', asyncHandler(async (req, res, next)=>{
 
+  const {email, password} = req.body
+  const user = await User.findOne({where:{ email }})
+
+  res.render('testlogin', {user})
+  
+}))
 
 
 module.exports = router;
