@@ -30,7 +30,9 @@ app.use(cookieParser(sessionSecret));
 app.use(
 	session({
 		name: "mezzo.sid",
-		secret: sessionSecret,
+    secret: sessionSecret,
+    // TELL IT where to store it
+    store,
 		// secret: 'sessionSecret',
 		resave: false,
 		saveUninitialized: false,
