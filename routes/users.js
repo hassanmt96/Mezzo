@@ -2,6 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 const { User } = require('../db/models')
 const { asyncHandler } = require('../utils')
+const { loginUser } = require('../auth')
 const router = express.Router();
 
 /* GET users listing. */
@@ -22,14 +23,16 @@ router.get('/login', asyncHandler(async (req, res, next) => {
 }));
 
 
-router.post('/login', asyncHandler(async (req, res, next)=>{
+router.post(
+	"/login",
+	asyncHandler(async (req, res, next) => {
+		const { email, password } = req.body;
+    const user = await User.findOne({ where: { email } });
+    loginUser(req, res, user)
 
-  const {email, password} = req.body
-  const user = await User.findOne({where:{ email }})
-
-  res.render('testlogin', {user})
-  
-}))
+		res.render("testlogin", { user });
+	})
+);
 
 
 module.exports = router;
