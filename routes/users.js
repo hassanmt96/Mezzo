@@ -6,7 +6,7 @@ const router = express.Router();
 const { asyncHandler, handleValidationErrors } = require('../utils');
 
 
-const userValidators = [
+const userValidator = [
   check('firstName')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for First Name')
@@ -67,6 +67,23 @@ const loginValidator = [
     .withMessage('Please provide your password')
   })
 ]
+
+/* GET register form. */
+router.get('/register', (req, res, next) => {
+  res.render('register');
+});
+
+router.post('/register', userValidator, handleValidationErrors, (req, res, next) => {
+  res.render('register');
+});
+
+router.get('/login', (req, res, next) => {
+  res.render('login');
+});
+
+router.post('/login', loginValidator, handleValidationErrors, (req, res, next) => {
+  res.render('login');
+});
 
 
 /* GET users listing. */
