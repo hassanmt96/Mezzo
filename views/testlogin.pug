@@ -6,6 +6,7 @@ block content
         div
             label Email
             input(type='text' name='email' required)
+            input(type='hidden' name='_csrf' value=token)
         div
             label Password 
             input(type='password' name='password' required)
@@ -15,3 +16,9 @@ block content
 
     if user
         p=user.firstName
+
+
+        form(action="/users/logout" method="POST")
+            div
+                button(type='submit') Logout
+

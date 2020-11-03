@@ -32,7 +32,8 @@ app.use(
 		name: "mezzo.sid",
     secret: sessionSecret,
     // TELL IT where to store it
-    store,
+	store,
+	// cookie: {maxAge: 9000 },
 		// secret: 'sessionSecret',
 		resave: false,
 		saveUninitialized: false,
