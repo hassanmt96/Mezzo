@@ -2,7 +2,6 @@ const express = require('express');
 const { check } = require('express-validator');
 const db = require('../db/models');
 const { User } = require('../db/models')
-const { asyncHandler } = require('../utils')
 const router = express.Router();
 const { asyncHandler, handleValidationErrors } = require('../utils');
 
@@ -58,15 +57,15 @@ const loginValidator = [
       return db.User.findOne({
         where: { email: value }
       })
-    })
-    .then((user) => {
-      if (!user) {
-        return Promise.reject('This email is not being used by an account')
+      .then((user) => {
+        if (!user) {
+          return Promise.reject('This email is not being used by an account')
       }
     }),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please provide your password')
+  })
 ]
 
 
