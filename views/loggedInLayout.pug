@@ -15,7 +15,8 @@ html
       div
         img.header-nav-bar#userIcon(name="userIcon")
         div.dropdown.hidden
-          a(href="/create-a-story") Create Story
-          a(href="/") Log Out
-          a(href="/delete-a-user") Delete Account
-    block content
+          a.hidden(href="/create-a-story") Create Story
+          a.hidden(href="/") Log Out
+          a.hidden(href="/delete-a-user") Delete Account
+
+  block content

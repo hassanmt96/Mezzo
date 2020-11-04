@@ -1,0 +1,15 @@
+extends loggedInLayout.pug
+
+block content
+    form(action="/users/create", method="post")
+        div
+            label Title
+            input(type="text" name="title" required)
+        div
+            label Subtitle
+            input(type="text" name="subtitle" required)
+        div
+            label Story
+            textarea(name="content" required)
+        div
+            button(type="submit") Publish

@@ -16,7 +16,7 @@ const store = new SequelizeStore({
 const likesRouter = require("./routes/likes")
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const storyRouter = require('./routes/story')
+const storyRouter = require('./routes/stories')
 
 const app = express();
 

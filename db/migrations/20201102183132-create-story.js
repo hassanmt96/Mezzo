@@ -22,8 +22,8 @@ module.exports = {
 			},
 			authorId: {
 				type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {model: "Users"}
+				allowNull: false,
+				references: {model: "Users"}
 			},
 			image: {
 				type: Sequelize.TEXT,
