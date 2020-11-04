@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const { User } = require("../db/models");
-const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils");
+const { asyncHandler, csrfProtection, handleValidationErrors } = require("./utils");
 const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
@@ -78,23 +78,62 @@ router.get('/register', (req, res, next) => {
   res.render('register');
 });
 
-router.post('/register', userValidator, handleValidationErrors, (req, res, next) => {
+// router.post('/register', userValidator, handleValidationErrors, (req, res, next) => {
 
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-  } = req.body;
+//   const {
+//     firstName,
+//     lastName,
+//     email,
+//     password,
+//   } = req.body;
 
-  const user = db.User.build({
-    firstName,
-    lastName,
-    email,
-    password,
-  });
-  res.render('register');
-});
+//   const user = db.User.build({
+//     firstName,
+//     lastName,
+//     email,
+//     password,
+//   });
+//   res.render('register', user);
+// });
+
+router.post('/register', userValidator,
+  asyncHandler(async (req, res, next) => {
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+    } = req.body;
+
+    let errors = [];
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+      // TODO Attempt to login the user.
+      const user = await db.User.findOne({ where: { email }});
+
+      if(user !== null){
+          //const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+
+          //if(passwordMatch){
+              //loginUser(req, res, user);
+              return res.redirect('/');
+         // }
+      }
+
+      errors.push(`Login failed for the provided email address and password`);
+    } else {
+      errors = validatorErrors.array().map((error) => error.msg);
+    }
+
+    res.render('register', {
+      title: 'Register',
+      firstName,
+      lastName,
+      email,
+      errors,
+    });
+  }));
 
 router.get('/login', (req, res, next) => {
   res.render('login');
@@ -111,71 +150,71 @@ router.get("/", (req, res, next) => {
 });
 
 //getting user by id
-router.get(
-	"/:id(\\d+)",
-	asyncHandler(async (req, res, next) => {
-		const user = await User.findByPk(req.params.id);
-		res.render(req.user);
-	})
-);
+// router.get(
+// 	"/:id(\\d+)",
+// 	asyncHandler(async (req, res, next) => {
+// 		const user = await User.findByPk(req.params.id);
+// 		res.render(req.user);
+// 	})
+// );
 
-router.get(
-	"/login",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		res.render("testlogin", { token: req.csrfToken() });
-	})
-);
+// router.get(
+// 	"/login",
+// 	csrfProtection,
+// 	asyncHandler(async (req, res, next) => {
+// 		res.render("testlogin", { token: req.csrfToken() });
+// 	})
+// );
 
-router.post(
-	"/login",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		const { email, password } = req.body;
-		const user = await User.findOne({ where: { email } });
-		let hash = user.password;
-		if (isPassword(password, hash)) {
-			loginUser(req, res, user);
-			res.render("testlogin", { user });
-		} else {
-			res.render("error");
-		}
-	})
-);
+// router.post(
+// 	"/login",
+// 	csrfProtection,
+// 	asyncHandler(async (req, res, next) => {
+// 		const { email, password } = req.body;
+// 		const user = await User.findOne({ where: { email } });
+// 		let hash = user.password;
+// 		if (isPassword(password, hash)) {
+// 			loginUser(req, res, user);
+// 			res.render("testlogin", { user });
+// 		} else {
+// 			res.render("error");
+// 		}
+// 	})
+// );
 
-router.post(
-	"/logout",
-	asyncHandler(async (req, res, next) => {
-		await logoutUser(req, res);
-		res.redirect("/");
-	})
-);
+// router.post(
+// 	"/logout",
+// 	asyncHandler(async (req, res, next) => {
+// 		await logoutUser(req, res);
+// 		res.redirect("/");
+// 	})
+// );
 
-router.get(
-	"/register",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		res.render("testregister", { token: req.csrfToken() });
-	})
-);
+// router.get(
+// 	"/register",
+// 	csrfProtection,
+// 	asyncHandler(async (req, res, next) => {
+// 		res.render("testregister", { token: req.csrfToken() });
+// 	})
+// );
 
-router.post(
-	"/register",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		const { firstName, lastName, email, password } = req.body;
-		let hash = await bcrypt.hash(password, 10);
+// router.post(
+// 	"/register",
+// 	csrfProtection,
+// 	asyncHandler(async (req, res, next) => {
+// 		const { firstName, lastName, email, password } = req.body;
+// 		let hash = await bcrypt.hash(password, 10);
 
-		await User.create({
-			firstName,
-			lastName,
-			email,
-			password: hash,
-		});
+// 		await User.create({
+// 			firstName,
+// 			lastName,
+// 			email,
+// 			password: hash,
+// 		});
 
-		res.redirect("/");
-	})
-);
+// 		res.redirect("/");
+// 	})
+// );
 
 module.exports = router;
 
