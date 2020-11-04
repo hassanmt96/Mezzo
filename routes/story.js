@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { asyncHandler, handleValidationErrors } = require('../utils');
+const { check } = require("express-validator");
 
 const storyValidators = [
   check('title')

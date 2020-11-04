@@ -1,0 +1,49 @@
+.user-form-div {
+    display: flex;
+    justify-content: center;
+
+}
+
+.user-field {
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    height: 50px;
+}
+
+.user-label {
+    padding-top: 20px;
+}
+
+.user-input:focus {
+    background: #E8FEF3;
+    outline: none;
+    box-shadow:  0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.user-input {
+    border: 1px solid black;
+    border-radius: 3px;
+
+}
+
+.user-button {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.login-button {
+    width: 100px;
+    height: 33px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: #A5FCCD;
+    font-size: 12pt;
+}
+
+.login-button:hover {
+    transform: translateY(-1px);
+    background-color: #4AF99B;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
