@@ -1,29 +1,29 @@
 doctype html
+
 html
   head
       title="Mezzo"
       link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel='stylesheet' href='/stylesheets/logged-in-nav-bar.css')
   body
     .header-nav-bar
-    .header-nav-logo
-        img(class='logo' src='/images/mezzo-cropped.png')
-    .header-nav-buttons
+      .header-nav-logo
+          img(class='logo' src='/images/mezzotransparent.png')
+      .header-nav-buttons
         input#search(type="search" placeholder="search")
         button#upgrade(name="upgrade") Upgrade
         img(src="/images")
 
-      if locals.authenticated
-        div
-          img.header-nav-bar#userIcon(name="userIcon")
-          div.dropdown.hidden
-            a.hidden(href="/create-a-story") Create Story
-            a.hidden(href="/") Log Out
-            a.hidden(href="/delete-a-user") Delete Account
-      else
-        .header-nav-buttons
-          a#login(href='/users/login') Login
-          a#register(href='/users/register') Register
+    if locals.authenticated
+      div
+        img.header-nav-bar#userIcon(name="userIcon")
+        div.dropdown.hidden
+          a.hidden(href="/create-a-story") Create Story
+          a.hidden(href="/") Log Out
+          a.hidden(href="/delete-a-user") Delete Account
+    else
+      .header-nav-buttons
+        a#login(href='/users/login') Login
+        a#register(href='/users/register') Register
 
   block content
-
-

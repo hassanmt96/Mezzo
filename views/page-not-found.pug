@@ -1,9 +1,0 @@
-extends loggedOutLayout.pug
-
-block content
-    h1=title
-    p=message
-    pre=stack
-    each error in errors
-      h2= error.title
-      p= error.message

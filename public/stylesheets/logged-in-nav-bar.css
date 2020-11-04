@@ -3,15 +3,15 @@ drop down, create story, log out, delete account, categories */
 .header-nav-bar{
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
-    /* padding: 30px 10% */
+    align-items: center;
+    padding: 30px 10%
 }
 
 .header-nav-logo{
     display: flex;
     display: inline-block;
     justify-content: flex-start;
-    /* padding: 50px; */
+    padding: 50px;
 }
 
 .header-nav-buttons{
@@ -25,6 +25,29 @@ drop down, create story, log out, delete account, categories */
     background-color: black;
 }
 
+#register{
+    color: white;
+    background-color: black;
+
+}
+
+#login{
+    color: white;
+    background-color: black;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
 .logo{
-    width: 5px;
+    width: 500px;
+    height: auto;
+}
+
+#register, #search, #login{
+    font-weight: 500px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
 }

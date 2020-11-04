@@ -22,7 +22,7 @@
 .header-nav-bar{
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+    align-items: center;
     padding: 30px 10%
 }
 
