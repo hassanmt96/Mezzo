@@ -79,15 +79,15 @@ router.get('/register', (req, res, next) => {
 });
 
 router.post('/register', userValidator, handleValidationErrors, (req, res, next) => {
-  res.render('register');
+  res.render('register', { User });
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('login');
+  res.render('login', { User });
 });
 
 router.post('/login', loginValidator, handleValidationErrors, (req, res, next) => {
-  res.render('login');
+  res.render('login', { User });
 });
 
 

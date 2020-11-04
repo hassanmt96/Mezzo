@@ -1,7 +1,7 @@
-extends loggedInLayout.pug
+extends layout.pug
 
 block content
-    form(action="/users/create", method="post")
+    form(action="/stories/create", method="post")
         div
             label Title
             input(type="text" name="title" required)

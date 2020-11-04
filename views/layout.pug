@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+      title="Mezzo"
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+  body
+    div
+      div
+        img.header-nav-bar
+      div
+        input.header-nav-bar#search(type="search", name="search", placeholder="Search")
+      div
+        button.header-nav-bar.btn#upgrade(name="upgrade") Upgrade
+
+      if locals.authenticated
+        div
+          img.header-nav-bar#userIcon(name="userIcon")
+          div.dropdown.hidden
+            a.hidden(href="/create-a-story") Create Story
+            a.hidden(href="/") Log Out
+            a.hidden(href="/delete-a-user") Delete Account
+      else
+          span(class='navbar-text px-4')
+            a(class='btn btn-sm btn-dark mr-2' href='/user/login') Login
+            a(class='btn btn-sm btn-dark' href='/user/register') Register
+          div
+            button.header-nav-bar.btn#register(name="register" href='/user/register') Register
+          div
+            button.header-nav-bar.btn#login(name="login" href='/user/login') Login
+  block content
