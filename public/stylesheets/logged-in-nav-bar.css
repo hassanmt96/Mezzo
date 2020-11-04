@@ -1,0 +1,53 @@
+/* navbar, logo, search, upgrade button, user icon,
+drop down, create story, log out, delete account, categories */
+.header-nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%
+}
+
+.header-nav-logo{
+    display: flex;
+    display: inline-block;
+    justify-content: flex-start;
+    padding: 50px;
+}
+
+.header-nav-buttons{
+    display: flex;
+    display: inline-block;
+    justify-content: flex-end;
+}
+
+#upgrade{
+    color: white;
+    background-color: black;
+}
+
+#register{
+    color: white;
+    background-color: black;
+
+}
+
+#login{
+    color: white;
+    background-color: black;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.logo{
+    width: 500px;
+    height: auto;
+}
+
+#register, #search, #login{
+    font-weight: 500px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
