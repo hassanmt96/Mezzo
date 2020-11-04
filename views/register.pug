@@ -3,25 +3,30 @@ extends layout.pug
 include utils.pug
 
 block content
-    form(action="/users/register" method='POST')
-        div
-            input(type="hidden" name="_csrf" value=token)
-        div
-            label First Name
-            input(type='text' name='firstName' required)
-        div
-            label Last Name
-            input(type='text' name='lastName' required)
-        div
-            label Email
-            input(type='text' name='email' required)
-        div
-            label Password
-            input(type='password' name='password' required)
-        div
-            label Confirm Password
-            input(type='password' name='confirmPassword' required)
-        div
-            button(type='submit') Register
-        div
-            a(href="/users/login") Already have an account?
+    .user-form-holder
+        .user-form-div
+            form(action="/users/register" method='POST' class="user-form")
+                div.user-label
+                    label First Name
+                .user-field
+                    input(type='text' name='firstName' required class="user-input")
+                .user-label
+                    label Last Name
+                .user-field
+                    input(type='text' name='lastName' required class="user-input")
+                .user-label
+                    label Email
+                .user-field
+                    input(type='text' name='email' required class="user-input")
+                .user-label
+                    label Password
+                .user-field
+                    input(type='password' name='password' required class="user-input")
+                .user-label
+                    label Confirm Password
+                .user-field
+                    input(type='password' name='confirmPassword' required class="user-input")
+                .user-button
+                    button(type='submit' class="login-button") Register
+                div
+                    a(href="/users/login") Already have an account?

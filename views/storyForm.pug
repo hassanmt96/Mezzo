@@ -1,15 +1,21 @@
 extends layout.pug
 
 block content
-    form(action="/stories/create", method="post")
-        div
-            label Title
-            input(type="text" name="title" required)
-        div
-            label Subtitle
-            input(type="text" name="subtitle" required)
-        div
-            label Story
-            textarea(name="content" required)
-        div
-            button(type="submit") Publish
+    .story-form-holder
+        .story-form-div
+            form(action="/stories/create", method="post" class="user-form")
+                .story-headers
+                    .story-label
+                        label Title
+                    .user-field
+                        input(type="text" name="title" required class="user-input")
+                    .story-label
+                        label Subtitle
+                    .user-field
+                        input(type="text" name="subtitle" required class="user-input")
+                .story-body-label
+                    label Story
+                .story-field
+                    textarea(name="content" required class="story-textarea" rows="30" cols="70")
+                .user-button
+                    button(type="submit" class="login-button") Publish
