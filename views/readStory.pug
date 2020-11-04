@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+
+    h1=story.title
+    h2=story.subtitle
+    p= `${story.User.firstName} ${story.User.lastName}`
+    div
+        button.btn(type='submit') Follow
+    div
+        img(src=story.image)
+    div
+        h3=story.content

@@ -1,6 +1,9 @@
-extends loggedOutLayout.pug
+extends layout.pug
+
 block content
     form(action="/users/register" method='POST')
+        div
+            input(type="hidden" name="_csrf" value=token)
         div
             label First Name
             input(type='text' name='firstName' required)
