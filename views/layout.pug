@@ -4,13 +4,13 @@ html
       title="Mezzo"
       link(rel='stylesheet' href='/stylesheets/reset.css')
   body
-    div
-      div
-        img.header-nav-bar
-      div
-        input.header-nav-bar#search(type="search", name="search", placeholder="Search")
-      div
-        button.header-nav-bar.btn#upgrade(name="upgrade") Upgrade
+    .header-nav-bar
+    .header-nav-logo
+        img(class='logo' src='/images/mezzo-cropped.png')
+    .header-nav-buttons
+        input#search(type="search" placeholder="search")
+        button#upgrade(name="upgrade") Upgrade
+        img(src="/images")
 
       if locals.authenticated
         div
@@ -20,8 +20,10 @@ html
             a.hidden(href="/") Log Out
             a.hidden(href="/delete-a-user") Delete Account
       else
-          span(class='navbar-text px-4')
-            a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login
-            a(class='btn btn-sm btn-dark' href='/users/register') Register
+        .header-nav-buttons
+          a#login(href='/users/login') Login
+          a#register(href='/users/register') Register
 
   block content
+
+

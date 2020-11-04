@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const { User } = require("../db/models");
-const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils");
+const { asyncHandler, csrfProtection, handleValidationErrors } = require("./utils");
 const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
@@ -78,6 +78,10 @@ const loginValidator = [
 router.get("/", (req, res, next) => {
 	res.send("respond with a resource");
 });
+
+router.get("/logged-in", (req, res, next) => {
+  res.render('loggedInLayout')
+})
 
 //getting user by id
 router.get(
