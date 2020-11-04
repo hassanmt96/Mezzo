@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator')
 const { asyncHandler, handleValidationErrors, csrfProtection } = require('../utils');
-const { Story, User } = require('../db/models');
+const { Story, User, Comment } = require('../db/models');
 
 
 const storyValidator = [
@@ -25,8 +25,8 @@ const storyValidator = [
 /* GET full story view */
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const storyId = parseInt(req.params.id);
-  const story = await Story.findByPk(storyId, { include: User });
-  console.log(story);
+  const story = await Story.findByPk(storyId, { include: User, Comment });
+
   res.render('readStory', { story });
 }));
 

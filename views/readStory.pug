@@ -1,13 +1,19 @@
 extends layout.pug
 
 block content
-
-    h1=story.title
-    h2=story.subtitle
-    p= `${story.User.firstName} ${story.User.lastName}`
     div
-        button.btn(type='submit') Follow
+        h1.title=story.title
+        h2.subtitle=story.subtitle
+    div.userContainer
+        p.author= `${story.User.firstName} ${story.User.lastName}`
+        button.btn#followBtn(type='submit') Follow
     div
         img(src=story.image)
     div
         h3=story.content
+    div.commentsContainer
+        textarea.comment(name="comment") Have thoughts?
+        button.btn#commentBtn(type='submit') Comment
+    //-     each comment in story.Comment.comment
+    //-         div.comment
+    //-             p=comment.comment
