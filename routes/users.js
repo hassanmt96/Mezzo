@@ -149,6 +149,10 @@ router.get("/", (req, res, next) => {
 	res.send("respond with a resource");
 });
 
+router.get("/logged-in", (req, res, next) => {
+  res.render('loggedInLayout')
+})
+
 //getting user by id
 // router.get(
 // 	"/:id(\\d+)",

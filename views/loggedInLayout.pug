@@ -3,19 +3,27 @@ html
   head
       title="Mezzo"
       link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel='stylesheet' href='/stylesheets/logged-in-nav-bar.css')
   body
-    div
-      div
-        img.header-nav-bar
-      div
-        input.header-nav-bar#search(type="search", name="search", placeholder="Search")
-        //- i.fas.fa-home
-      div
-        button.header-nav-bar#upgrade(name="upgrade") Upgrade
-      div
-        img.header-nav-bar#userIcon(name="userIcon")
-        div.dropdown.hidden
-          a(href="/create-a-story") Create Story
-          a(href="/") Log Out
-          a(href="/delete-a-user") Delete Account
-    block content
+    //- div
+    //-   div
+    //-     img
+    //-   div
+    //-     input.header-nav-bar#search(type="search", name="search", placeholder="Search")
+    //-     //- i.fas.fa-home
+    //-   div
+    //-     button.header-nav-bar#upgrade(name="upgrade") Upgrade
+    //-   div
+    //-     img.header-nav-bar#userIcon(name="userIcon")
+    //-     div.dropdown.hidden
+    //-       a(href="/create-a-story") Create Story
+    //-       a(href="/") Log Out
+    //-       a(href="/delete-a-user") Delete Account
+    //- block content
+    .header-nav-bar
+      .header-nav-logo
+        img(src='/images/mezzo.png')
+      .header-nav-buttons
+        input#search(type="search" placeholder="search")
+        button#upgrade(name="upgrade") Upgrade
+        img(src="/images")

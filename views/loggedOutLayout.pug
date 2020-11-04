@@ -3,16 +3,24 @@ html
   head
       title="Mezzo"
       link(rel='stylesheet' href='/stylesheets/reset.css')
-      link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css')
+      link(rel='stylesheet' href='/stylesheets/nav-bar.css')
   body
-    div
-      div.header-nav-bar
-        img.header-nav-bar
-      span.nav-buttons
-        input.header-nav-bar#search(type="search", name="search", placeholder="Search")
-        i.fas.fa-search
-      span.nav-buttons
-        button.header-nav-bar#register(name="register") Register
-      span.nav-buttons
-        button.header-nav-bar#login(name="login") Login
+    //- div
+    //-   div.header-nav-bar
+    //-     img(src="images/mezzo.png")
+    //-   span.nav-buttons
+    //-     input#search.header-nav-bar(type="search", name="search", placeholder="Search")
+    //-     i.fas.fa-search
+    //-   span.nav-buttons
+    //-     button#register.header-nav-bar(name="register") Register
+    //-   span.nav-buttons
+    //-     button#login.header-nav-bar(name="login") Login
+    //- block content
+    .header-nav-bar
+      .header-nav-logo
+        img(src='/images/mezzo.png')
+      .header-nav-buttons
+        input#search(type="search", placeholder="search")
+        button#register(name="register") Register
+        button#login(name="login") Login
     block content
