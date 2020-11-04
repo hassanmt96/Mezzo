@@ -22,8 +22,12 @@ html
     //- block content
     .header-nav-bar
       .header-nav-logo
-        img(src='/images/mezzo.png')
+        img(class='logo' src='/images/mezzo-cropped.png')
       .header-nav-buttons
         input#search(type="search" placeholder="search")
         button#upgrade(name="upgrade") Upgrade
         img(src="/images")
+        div.dropdown.hidden
+          a(href="/create-a-story") Create Story
+          a(href="/") Log Out
+          a(href="/delete-a-user") Delete Account

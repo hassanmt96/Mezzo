@@ -49,4 +49,11 @@
     background-color: black;
 }
 
+.hidden{
+    visibility: hidden;
+}
 
+.logo{
+    width: 150px;
+    height: auto;
+}
