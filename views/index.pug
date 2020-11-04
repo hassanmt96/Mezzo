@@ -1,13 +1,12 @@
-extends loggedOutLayout
-
-append head
-  //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
-  //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
+extends layout.pug
 
 block content
-  h1= title
-  p Welcome to Mezzo
 
-
+    header What's popular on Mezzo right now
+    body
+        div.preview
+            each story in stories
+                img(src=story.image)
+                h1=story.title
+                p=story.subtitle
+                p=story.content

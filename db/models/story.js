@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 			authorId: {
 				type: DataTypes.INTEGER,
 				allowNull: false,
+				references: { model: 'Users' }
 			},
 			image: {
 				type: DataTypes.TEXT,
