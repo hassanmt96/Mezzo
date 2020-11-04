@@ -56,14 +56,24 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get("env") === "development" ? err : {};
+// app.use(function (err, req, res, next) {
+// 	// set locals, only providing error in development
+// 	res.locals.message = err.message;
+// 	res.locals.error = req.app.get("env") === "development" ? err : {};
 
-	// render the error page
+// 	// render the error page
+// 	res.status(err.status || 500);
+// 	res.render("error");
+// });
+
+app.use((err, req, res, next) => {
 	res.status(err.status || 500);
-	res.render("error");
-});
+	const isProduction = process.env.NODE_ENV === 'production';
+	res.render('error', {
+	  title: 'Server Error',
+	  message: isProduction ? null : err.message,
+	  stack: isProduction ? null : err.stack,
+	});
+  });
 
 module.exports = app;

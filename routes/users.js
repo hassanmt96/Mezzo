@@ -79,6 +79,20 @@ router.get('/register', (req, res, next) => {
 });
 
 router.post('/register', userValidator, handleValidationErrors, (req, res, next) => {
+
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+  } = req.body;
+
+  const user = db.User.build({
+    firstName,
+    lastName,
+    email,
+    password,
+  });
   res.render('register');
 });
 

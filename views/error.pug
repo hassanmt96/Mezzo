@@ -1,6 +1,8 @@
 extends loggedOutLayout.pug
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+ div
+   p= message || 'An unexpected error occurred on the server.'
+ if stack
+   h3 Stack Trace
+   pre= stack

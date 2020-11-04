@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { check } = require('express-validator');
 const { asyncHandler, handleValidationErrors } = require('../utils');
 
 const storyValidators = [
@@ -16,7 +17,7 @@ const storyValidators = [
   check('content')
     .exists({ checkFalsy: true })
     .withMessage('Please provide content')
-]
+];
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

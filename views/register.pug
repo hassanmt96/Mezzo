@@ -1,20 +1,35 @@
 extends loggedOutLayout.pug
+
+include utils.pug
+
+//- block content
+//-     form(action="/users/register" method='POST')
+//-         div
+//-             label First Name
+//-             input(type='text' name='firstName' )
+//-         div
+//-             label Last Name
+//-             input(type='text' name='lastName' )
+//-         div
+//-             label Email
+//-             input(type='text' name='email' )
+//-         div
+//-             label Password
+//-             input(type='password' name='password' )
+//-         div
+//-             label Confirm Password
+//-             input(type='password' name='confirmPassword' )
+//-         div
+//-             button(type='submit') Register
+
 block content
-    form(action="/users/register" method='POST')
-        div
-            label First Name
-            input(type='text' name='firstName' required)
-        div
-            label Last Name
-            input(type='text' name='lastName' required)
-        div
-            label Email
-            input(type='text' name='email' required)
-        div
-            label Password
-            input(type='password' name='password' required)
-        div
-            label Confirm Password
-            input(type='password' name='confirmPassword' required)
-        div
-            button(type='submit') Register
+  +validationErrorSummary(errors)
+  form(action='/user/login' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +field('First Name', 'firstName', firstName)
+    +field('Last Name', 'lastName', lastName)
+    +field('Email Address', 'emailAddress', email)
+    +field('Password', 'password', password)
+    div(class='py-4')
+      button(type='submit' class='btn btn-primary') Register
+      a(href='/' class='btn btn-warning ml-2') Cancel
