@@ -3,11 +3,16 @@ html
   head
       title="Mezzo"
       link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.css')
   body
     div
+      div.header-nav-bar
         img.header-nav-bar
+      span.nav-buttons
         input.header-nav-bar#search(type="search", name="search", placeholder="Search")
-        //- i.fas.fa-home
+        i.fas.fa-search
+      span.nav-buttons
         button.header-nav-bar#register(name="register") Register
+      span.nav-buttons
         button.header-nav-bar#login(name="login") Login
     block content

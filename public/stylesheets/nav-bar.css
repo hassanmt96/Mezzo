@@ -1,0 +1,14 @@
+span.nav-buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#register{
+    color: white;
+    background-color: black;
+}
+
+#login{
+    color: white;
+    background-color: black;
+}
