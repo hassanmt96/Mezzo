@@ -1,13 +1,6 @@
-extends loggedOutLayout.pug
-
-  append head
-    //- add page specific styles by appending to the head
-    link(rel="stylesheet" href="/stylesheets/index.css")
-    //- add page specific js
-    script(src="/javascripts/index.js" type="module" defer)
+extends layout.pug
+include utils.pug
 
 block content
-  h1= title
-  p Welcome to Mezzo
-
-
+    link(rel='stylesheet' type='text/css' href='/styles/index.css')
+    script(defer type="module" src="js/index.js")

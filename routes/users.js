@@ -1,5 +1,5 @@
 const express = require("express");
-const { check } = require("express-validator");
+const { check, validationResult } = require("express-validator");
 const { User } = require("../db/models");
 const { asyncHandler, csrfProtection, handleValidationErrors } = require("../utils");
 const { loginUser, logoutUser } = require("../auth");
@@ -10,7 +10,7 @@ const isPassword = async (password, hash) =>
 	await bcrypt.compare(password, hash);
 const db = require('../db/models');
 
-
+//USER VALIDATION CHECKER 
 const userValidator = [
   check('firstName')
     .exists({ checkFalsy: true })
@@ -30,7 +30,7 @@ const userValidator = [
     .isEmail()
     .withMessage('Email Address is not a valid email')
     .custom((value) => {
-      return db.User.findOne({
+      return User.findOne({
         where: { email: value }
       })
       .then((user) => {
@@ -54,12 +54,13 @@ const userValidator = [
     }),
 ];
 
+//LOGIN VALIDATION CHECKER 
 const loginValidator = [
   check('email')
     .exists({ checkFalsy: true })
     .withMessage('Please provide your email')
     .custom((value) => {
-      return db.User.findOne({
+      return User.findOne({
         where: { email: value }
       })
       .then((user) => {
@@ -73,30 +74,12 @@ const loginValidator = [
   })
 ]
 
-/* GET register form. */
-// router.get('/register', (req, res, next) => {
-//   res.render('register');
-// });
-
-// router.post('/register', userValidator, handleValidationErrors, (req, res, next) => {
-//   res.render('register');
-// });
-
-// router.get('/login', (req, res, next) => {
-//   res.render('login');
-// });
-
-// router.post('/login', loginValidator, handleValidationErrors, (req, res, next) => {
-//   res.render('login');
-// });
-
-
-/* GET users listing. */
+//GET FOR USER LISTING
 router.get("/", (req, res, next) => {
 	res.send("respond with a resource");
 });
 
-//getting user by id
+//GETTING A SINGLE USER BY ID
 router.get(
 	"/:id(\\d+)",
 	asyncHandler(async (req, res, next) => {
@@ -105,29 +88,36 @@ router.get(
 	})
 );
 
+//LOGIN GET AND POST ROUTE
 router.get(
 	"/login",
 	csrfProtection,
 	asyncHandler(async (req, res, next) => {
-		res.render("testlogin", { token: req.csrfToken() });
+		res.render("login", { token: req.csrfToken() });
 	})
 );
 
 router.post(
 	"/login",
-	csrfProtection,
+	csrfProtection, loginValidator, validationResult,
 	asyncHandler(async (req, res, next) => {
-		const { email, password } = req.body;
+    const { email, password } = req.body;
+    const validationErrors = validationResult(req)
+    // console.log(validationErrors)
+    // if(validationErrors.isEmpty()){
+    //   if(user === null)
 		const user = await User.findOne({ where: { email } });
 		let hash = user.password;
 		if (isPassword(password, hash)) {
 			loginUser(req, res, user);
-			res.render("testlogin", { user });
+			res.render("login", { user, token:req.csrfToken() });
 		} else {
 			res.render("error");
 		}
 	})
 );
+
+//LOGOUT ROUTE 
 
 router.post(
 	"/logout",
@@ -137,31 +127,50 @@ router.post(
 	})
 );
 
+//REGISTER GET AND POST ROUTE 
 router.get(
 	"/register",
 	csrfProtection,
 	asyncHandler(async (req, res, next) => {
-		res.render("testregister", { token: req.csrfToken() });
+    const user = User.build();
+		res.render("register", { user, token: req.csrfToken() });
 	})
 );
 
-router.post(
-	"/register",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		const { firstName, lastName, email, password } = req.body;
-		let hash = await bcrypt.hash(password, 10);
+router.post("/register", csrfProtection, userValidator, asyncHandler(async(req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+  // let hash = await
 
-		await User.create({
-			firstName,
-			lastName,
-			email,
-			password: hash,
-		});
+  const user = User.build({
+    firstName,
+    lastName,
+    email,
+  });
+  // console.log('success', user.toJSON());
+  const validationErrors = validationResult(req)
+  // console.log(validationErrors)
+  if(validationErrors.isEmpty()){
+    const hash = await bcrypt.hash(password, 10)
+    user.password = hash
+    await user.save()
+    loginUser(req, res, user)
+    res.redirect('/')
+  } else{
+  const errors = validationErrors.array().map((error)=> error.msg)
+  console.log(errors)
+    res.render("register", {
+    title: "Register",
+    user,
+    errors,
+    token: req.csrfToken(),
+  })
 
-		res.redirect("/");
-	})
-);
+  }
+
+}));
+
+
+//DELETE ROUTE GOES HERE >>><<<<<<
 
 module.exports = router;
 

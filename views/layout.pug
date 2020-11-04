@@ -1,7 +1,13 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Mezzo
-    body
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Mezzo - #{title}
+  body
+    nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
+      a(class='navbar-brand' href='/') Mezzo
+    .container
+      h2(class='py-4') #{title}
+      block content
+  

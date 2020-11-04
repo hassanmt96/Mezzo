@@ -1,20 +1,26 @@
-extends loggedOutLayout.pug
+extends layout.pug
+
+include utils.pug
+
 block content
-    form(action="/users/register" method='POST')
+  +validationErrorSummary(errors)
+  form(action='/users/register' method='post')
+        div
+            input(type='hidden' name='_csrf' value=token)
         div
             label First Name
-            input(type='text' name='firstName' required)
+            input(name="firstName" type="text")
         div
             label Last Name
-            input(type='text' name='lastName' required)
+            input(name="lastName" type="text")
         div
             label Email
-            input(type='text' name='email' required)
+            input(name="email" type="text")
         div
             label Password
-            input(type='password' name='password' required)
+            input(name="password" type="password")
         div
-            label Confirm Password
-            input(type='password' name='confirmPassword' required)
+            button(type="submit") Register
+            a(href='/' class='btn btn-warning ml-2') Cancel
         div
-            button(type='submit') Register
+            p: a(href='/users/login') Already have an account?

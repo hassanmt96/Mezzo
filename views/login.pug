@@ -1,13 +1,14 @@
-extends loggedOutLayout.pug
+extends layout.pug
+include utils.pug
+
 block content
-    form(action="/users/login" method='POST')
-        div
-            label Email
-            input(type='text' name='email' required)
-        div
-            label Password
-            input(type='password' name='password' required)
-        div
-            button(type='submit') Login
-    //- if user
-    //-     p=user.firstName
+  +validationErrorSummary(errors)
+  form(action='/user/login' method='post')
+    input(type='hidden' name='_csrf' value=token)
+    +field('Email Address', 'emailAddress', emailAddress)
+    +field('Password', 'password', null, 'password')
+    div(class='py-4')
+      button(type='submit' class='btn btn-primary') Login
+      a(href='/' class='btn btn-warning ml-2') Cancel
+  div
+    p: a(href='/users/register') Don't have an account?
