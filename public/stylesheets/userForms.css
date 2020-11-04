@@ -1,7 +1,21 @@
-.user-form-div {
+body {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.user-form-holder {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
 
+.user-form-div {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    width: 300px;
+    display: flex;
+    justify-content: center;
 }
 
 .user-field {
@@ -31,6 +45,7 @@
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .login-button {
@@ -40,6 +55,7 @@
     border-radius: 5px;
     background-color: #A5FCCD;
     font-size: 12pt;
+
 }
 
 .login-button:hover {
