@@ -21,10 +21,7 @@ html
             a.hidden(href="/delete-a-user") Delete Account
       else
           span(class='navbar-text px-4')
-            a(class='btn btn-sm btn-dark mr-2' href='/user/login') Login
-            a(class='btn btn-sm btn-dark' href='/user/register') Register
-          div
-            button.header-nav-bar.btn#register(name="register" href='/user/register') Register
-          div
-            button.header-nav-bar.btn#login(name="login" href='/user/login') Login
+            a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login
+            a(class='btn btn-sm btn-dark' href='/users/register') Register
+
   block content

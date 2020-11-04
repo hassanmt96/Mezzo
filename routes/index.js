@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { requireAuth } = require('../auth');
 const { asyncHandler, handleValidationErrors } = require('../utils');
-const { Story } = require('../db/models');
+const { Story, User } = require('../db/models');
 
 
 /* GET home page/feed */

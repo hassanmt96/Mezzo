@@ -73,23 +73,6 @@ const loginValidator = [
   })
 ]
 
-/* GET register form. */
-router.get('/register', (req, res, next) => {
-  res.render('register');
-});
-
-router.post('/register', userValidator, handleValidationErrors, (req, res, next) => {
-  res.render('register', { User });
-});
-
-router.get('/login', (req, res, next) => {
-  res.render('login', { User });
-});
-
-router.post('/login', loginValidator, handleValidationErrors, (req, res, next) => {
-  res.render('login', { User });
-});
-
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
@@ -109,23 +92,33 @@ router.get(
 	"/login",
 	csrfProtection,
 	asyncHandler(async (req, res, next) => {
-		res.render("testlogin", { token: req.csrfToken() });
+		res.render("login", { token: req.csrfToken() });
 	})
 );
 
 router.post(
 	"/login",
-	csrfProtection,
+  csrfProtection,
+  loginValidator,
+  handleValidationErrors,
 	asyncHandler(async (req, res, next) => {
 		const { email, password } = req.body;
 		const user = await User.findOne({ where: { email } });
 		let hash = user.password;
 		if (isPassword(password, hash)) {
 			loginUser(req, res, user);
-			res.render("testlogin", { user });
+			 res.redirect('/');
 		} else {
 			res.render("error");
 		}
+	})
+);
+
+router.get(
+	"/logout",
+	asyncHandler(async (req, res, next) => {
+		await logoutUser(req, res);
+		res.redirect("/");
 	})
 );
 
@@ -139,15 +132,17 @@ router.post(
 
 router.get(
 	"/register",
-	csrfProtection,
+  csrfProtection,
 	asyncHandler(async (req, res, next) => {
-		res.render("testregister", { token: req.csrfToken() });
+		res.render("register", { token: req.csrfToken() });
 	})
 );
 
 router.post(
 	"/register",
-	csrfProtection,
+  csrfProtection,
+  userValidator,
+  handleValidationErrors,
 	asyncHandler(async (req, res, next) => {
 		const { firstName, lastName, email, password } = req.body;
 		let hash = await bcrypt.hash(password, 10);
