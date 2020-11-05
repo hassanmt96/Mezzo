@@ -1,0 +1,73 @@
+.feed-container {
+	background-color: #fcfffd;
+	padding: 15px;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+.feed-main-header {
+	font-weight: 700;
+	text-align: center;
+	font-size: 18pt;
+}
+
+.feed-main-underline {
+	background-color: #4af99b;
+	height: 5px;
+	margin: 5px auto 10px auto;
+	max-width: 600px;
+	border-radius: 10px 40px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.feed-preview {
+	margin: 0px auto;
+	max-width: 600px;
+}
+
+.feed-story-image-container {
+	max-height: 250px;
+	overflow: hidden;
+	transition-duration: 1000ms;
+	transition-property: max-height;
+}
+
+.feed-story-image-container:hover {
+    max-height: 600px;
+    transition-delay: 250ms;
+	transition-duration: 1000ms;
+	transition-property: max-height;
+}
+
+.feed-story-image {
+	max-width: 600px;
+	margin-top: 10px;
+}
+
+.feed-story-title-container {
+	margin-top: 25px;
+}
+
+.feed-story-title {
+	font-size: 16pt;
+	font-weight: bold;
+	text-decoration: underline;
+	text-decoration-color: #4af99b;
+}
+
+.feed-story-subtitle {
+	font-size: 14pt;
+}
+
+.feed-story-content {
+	font-size: 12pt;
+	max-width: 600px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.feed-story-spacer {
+	text-align: center;
+	font-size: 40px;
+}
