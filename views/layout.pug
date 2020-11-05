@@ -9,22 +9,22 @@ html
   body
     .header-nav-bar
       .header-nav-logo
-          img(class='logo' src='/images/mezzo-cropped.png')
+          img(class='logo' src='/images/Copy of mezzo..png')
       .header-nav-buttons
         input#search(type="search" placeholder="search")
-        button#upgrade(name="upgrade") Upgrade
         img(src="/images")
-
-    if locals.authenticated
-      div
-        img.header-nav-bar#userIcon(name="userIcon")
-        div.dropdown.hidden
-          a.hidden(href="/create-a-story") Create Story
-          a.hidden(href="/") Log Out
-          a.hidden(href="/delete-a-user") Delete Account
-    else
-      .header-nav-buttons
-        a#login(href='/users/login') Login
-        a#register(href='/users/register') Register
+      if !locals.authenticated
+        .buttonContainer
+          form(action="/users/login", method="get")
+            button.header-nav-buttons#login(href='/users/login') Login
+          form(action="/users/register", method="get")
+            button.header-nav-buttons#register(href='/users/register') Register
+      else
+          button#upgrade(name="upgrade") Upgrade
+          img.header-nav-bar#userIcon(name="userIcon")
+          div.dropdown.hidden
+            a.hidden(href="/create-a-story") Create Story
+            a.hidden(href="/") Log Out
+            a.hidden(href="/delete-a-user") Delete Account
 
   block content

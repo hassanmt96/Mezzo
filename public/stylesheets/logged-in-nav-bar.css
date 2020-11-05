@@ -23,19 +23,53 @@ drop down, create story, log out, delete account, categories */
 }
 
 #upgrade{
+    display: flex;
+    display: inline-block;
+    justify-content: flex-end;
     color: white;
     background-color: black;
 }
 
 #register{
-    color: white;
-    background-color: black;
+    display: inline;
+    width: 100px;
+	height: 33px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-color: #a5fccd;
+    font-size: 12pt;
+    margin: 4px 4px 4px 4px;
+}
 
+#register:hover {
+    display: inline;
+    border-radius: 3px;
+    border: 0;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    margin: 4px 4px 4px 4px;
 }
 
 #login{
-    color: white;
-    background-color: black;
+    display: inline;
+    width: 100px;
+	height: 33px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-color: #a5fccd;
+    font-size: 12pt;
+    margin: 4px 4px 4px 4px;
+}
+
+#login:hover{
+    display: inline;
+    border-radius: 3px;
+    border: 0;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    margin: 4px 4px 4px 4px;
 }
 
 .hidden{
@@ -47,7 +81,7 @@ drop down, create story, log out, delete account, categories */
     height: auto;
 }
 
-#register, #search, #login{
+#search{
     font-weight: 500px;
     font-size: 16px;
     color: black;
