@@ -7,7 +7,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 
 const isPassword = async (password, hash) =>
-  await bcrypt.compare(password, hash);
+await bcrypt.compare(password, hash);
 const db = require('../db/models');
 const { token } = require("morgan");
 

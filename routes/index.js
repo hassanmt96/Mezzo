@@ -9,9 +9,11 @@ const { Story, Follow, User } = require('../db/models');
 router.get('/', asyncHandler(async(req, res, next) => {
   const stories = await Story.findAll({ order: [['title', 'ASC']]});
   // const followerId = /* insert session user.id */
-  // const following = Follow.findAll({ where: followerId });
-  // const authorId = following.followingId;
-  // const followingStories = Story.findAll({ where: authorId });
+  // const following = await Follow.findAll({ where: followerId });
+  //for (each follow in following) {
+  //  const authorId = follow.followingId;
+  //}
+  // const followingStories = await Story.findAll({ where: authorId });
   res.render('index', { stories });
 }));
 
