@@ -7,7 +7,8 @@ block content
         body
             div.feed-preview
                 each story in stories
-                    img.feed-story-image(src=story.image)
+                    .feed-story-image-container
+                        img.feed-story-image(src=story.image)
                     .feed-story-title-container
                         a.feed-story-title(href=`/stories/${story.id}`)=story.title
                     p.feed-story-subtitle=story.subtitle

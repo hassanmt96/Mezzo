@@ -1,8 +1,8 @@
 .feed-container {
-    background-color: #FCFFFD;
-    padding: 15px;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+	background-color: #fcfffd;
+	padding: 15px;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
 }
 
 .feed-main-header {
@@ -21,8 +21,21 @@
 }
 
 .feed-preview {
-    margin: 0px auto;
-    max-width: 600px;
+	margin: 0px auto;
+	max-width: 600px;
+}
+
+.feed-story-image-container {
+	max-height: 250px;
+	overflow: hidden;
+	transition-duration: 1000ms;
+	transition-property: max-height;
+}
+
+.feed-story-image-container:hover {
+	max-height: 600px;
+	transition-duration: 1000ms;
+	transition-property: max-height;
 }
 
 .feed-story-image {
@@ -31,29 +44,29 @@
 }
 
 .feed-story-title-container {
-    margin-top: 25px;
+	margin-top: 25px;
 }
 
 .feed-story-title {
 	font-size: 16pt;
 	font-weight: bold;
-    text-decoration: underline;
-    text-decoration-color:  #4af99b;
+	text-decoration: underline;
+	text-decoration-color: #4af99b;
 }
 
 .feed-story-subtitle {
-    font-size: 14pt;
+	font-size: 14pt;
 }
 
 .feed-story-content {
-    font-size: 12pt;
-    max-width: 600px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	font-size: 12pt;
+	max-width: 600px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .feed-story-spacer {
-    text-align: center;
-    font-size: 40px;
+	text-align: center;
+	font-size: 40px;
 }
