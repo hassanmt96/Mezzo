@@ -58,7 +58,18 @@
     height: auto;
 }
 
+
+.avatarcontainer{
+    width: 344px;
+    margin: 0 auto;
+}
+
 .avatar{
-    width: 40px;
+    width: 5px;
     border-radius: 50%;
+    display: inline;
+}
+
+.avatarcontainer:hover{
+    box-shadow: 0px 2px 4px rgba(0,0,0,.3);
 }
