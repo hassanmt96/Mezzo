@@ -23,11 +23,14 @@ drop down, create story, log out, delete account, categories */
 }
 
 #upgrade{
-    display: flex;
-    display: inline-block;
-    justify-content: flex-end;
-    color: white;
-    background-color: black;
+    display: inline;
+    width: 100px;
+	height: 33px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-color: #a5fccd;
+    font-size: 12pt;
+    margin: 4px 4px 4px 4px;
 }
 
 #register{
@@ -72,10 +75,6 @@ drop down, create story, log out, delete account, categories */
     margin: 4px 4px 4px 4px;
 }
 
-.hidden{
-    visibility: hidden;
-}
-
 .logo{
     width: 200px;
     height: auto;
@@ -86,4 +85,63 @@ drop down, create story, log out, delete account, categories */
     font-size: 16px;
     color: black;
     text-decoration: none;
+}
+
+.avatarcontainer{
+    width: 344px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.avatar{
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    display: flex-end;
+}
+
+.dropbtn{
+    cursor: pointer;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdowncontent{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdowncontent a{
+    color: black;
+    padding: 12x 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdowncontent a:hover{
+    color: #a5fccd;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdowncontent{
+    display: block;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.buttoncontainer{
+    display: flex;
+    justify-content: space-between;
 }

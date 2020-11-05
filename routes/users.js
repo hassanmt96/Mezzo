@@ -119,6 +119,7 @@ router.post(
       errors.push('Login failed. Please provide correct input for either fields.')
     } else {
        errors = validationErrors.array().map((error) => error.msg)
+       res.render('login', {errors})
     }
     res.render('login', { title: "Login", token: req.csrfToken(), errors, email })
   })
