@@ -7,7 +7,7 @@ const { Story, User } = require('../db/models');
 
 /* GET home page/feed */
 router.get('/', asyncHandler(async(req, res, next) => {
-  const stories = await Story.findAll({ include: User, order: [['title', 'ASC']]});
+  const stories = await Story.findAll({ order: [['title', 'ASC']]});
   res.render('index', { title: 'Stories', stories });
 }));
 

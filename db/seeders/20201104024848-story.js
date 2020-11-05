@@ -17,7 +17,7 @@ module.exports = {
 					updatedAt: new Date(),
 				},
 				{
-					title: "Why the trumpet is the world's greatest instrument",
+					title: "Why the Trumpet is the World's Greatest Instrument",
 					subtitle: "The answer may suprise you!",
 					content:
 						"words words words words words words words words words words words words words words words words words words words words words words words words",
