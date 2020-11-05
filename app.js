@@ -49,24 +49,14 @@ app.use("/users", usersRouter);
 app.use("/stories", storyRouter);
 app.use("/stories/likes", likesRouter)
 
-// catch 404 and forward to error handler
-app.use((req, res, next)=> {
-	const err = new Error('The requested page could not be found.');
+// Catch unhandled requests and forward to error handler.
+app.use((req, res, next) => {
+	const err = new Error("The requested page couldn't be found.");
 	err.status = 404;
 	next(err);
-})
+  });
 
-// error handler
-// app.use(function (err, req, res, next) {
-// 	// set locals, only providing error in development
-// 	res.locals.message = err.message;
-// 	res.locals.error = req.app.get("env") === "development" ? err : {};
-
-// 	// render the error page
-// 	res.status(err.status || 500);
-// 	res.render("error");
-// });
-
+// Error handler to log errors.
 app.use((err, req, res, next) => {
 	if (process.env.NODE_ENV === "production") {
 	  // TODO Log the error to the database.
@@ -77,11 +67,11 @@ app.use((err, req, res, next) => {
   });
 
 
-//404 Error Handler
+// Error handler for 404 errors.
 app.use((err, req, res, next) => {
 	if (err.status === 404) {
 	  res.status(404);
-	  res.render("page-not-found", {
+	  res.render("notfound", {
 		title: "Page Not Found",
 	  });
 	} else {
@@ -89,14 +79,16 @@ app.use((err, req, res, next) => {
 	}
   });
 
+
+
+// BASIC ERROR HANDLER
 app.use((err, req, res, next) => {
 	res.status(err.status || 500);
-	const isProduction = process.env.NODE_ENV === 'production';
-	res.render('error', {
-	  title: 'Server Error',
+	const isProduction = process.env.NODE_ENV === "production";
+	res.render("error", {
+	  title: "Server Error",
 	  message: isProduction ? null : err.message,
 	  stack: isProduction ? null : err.stack,
 	});
   });
-
 module.exports = app;
