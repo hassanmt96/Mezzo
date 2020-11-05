@@ -1,16 +1,20 @@
 extends layout.pug
 
 block content
-
-    header What's popular on Mezzo right now
-    body
-        div.preview
-            each story in stories
-                img(src=story.image)
-                h1=story.title
-                p=story.subtitle
-                p=story.content
-        h2 Stories from people you follow
+    .feed-container
+        p.feed-main-header What's popular on Mezzo right now
+        .feed-main-underline
+        body
+            div.feed-preview
+                each story in stories
+                    .feed-story-image-container
+                        img.feed-story-image(src=story.image)
+                    .feed-story-title-container
+                        a.feed-story-title(href=`/stories/${story.id}`)=story.title
+                    p.feed-story-subtitle=story.subtitle
+                    p.feed-story-content=story.content
+                    p.feed-story-spacer .     .      .
+                    h2 Stories from people you follow
         //- if locals.authenticated
         //-     each story in followingStories
         //-         img(src=story.image)

@@ -4,9 +4,8 @@ block content
     .user-form-holder
         .user-form-div
             form(action="/users/login" method='POST' class="user-form")
-                div
-                    input(type='hidden' name='_csrf' value=token)
-                .user-label
+                input(type='hidden' name='_csrf' value=token)
+                div.user-label
                     label Email
                 .user-field
                     input(type='text' name='email' required class="user-input")
