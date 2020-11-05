@@ -7,9 +7,9 @@ const hashPassword = async (password) => {
 	await bcrypt.hash(password, saltRounds);
 };
 
-const isPassword = async (password, hash) => {
-	await bcrypt.compare(password, hash);
-};
+// const isPassword = async (password, hash) => {
+// 	await bcrypt.compare(password, hash);
+// };
 
 
 const { check, validationResult } = require('express-validator');
@@ -30,4 +30,4 @@ const handleValidationErrors = (req, res, next) => {
     next();
 };
 
-module.exports = { asyncHandler, csrfProtection, hashPassword, isPassword, handleValidationErrors };
+module.exports = { asyncHandler, csrfProtection, hashPassword, handleValidationErrors };
