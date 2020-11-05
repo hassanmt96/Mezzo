@@ -25,7 +25,7 @@ const storyValidator = [
 /* GET full story view */
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const storyId = parseInt(req.params.id);
-  const story = await Story.findByPk(storyId, { include: User, include: nComment });
+  const story = await Story.findByPk(storyId, { include: User });
 
   res.render('readStory', { story });
 }));
