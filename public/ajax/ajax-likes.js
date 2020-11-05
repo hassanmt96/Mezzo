@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 likeButton.addEventListener('click', async(e) => {
     e.preventDefault();
     const storyId = e.story.id;
-const res = await fetch('/read-a-story', {
+const res = await fetch(`/stories/${storyId}/like`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

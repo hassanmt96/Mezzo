@@ -12,6 +12,9 @@ block content
     div.story
         h3=story.content
     div.commentsContainer
-        button.btn#likeBtn(type='submit') Like
+        if isLiked
+            button.btn#likeBtn(type='submit') Liked
+        else
+            button.btn#likeBtn(type='submit') Like
         textarea.comment(name="comment") Have thoughts?
         button.btn#commentBtn(type='submit') Comment
