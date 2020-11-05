@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('like', async(req, res)=> {
+router.post('/', async(req, res)=> {
     res.render('readStory');
 })
 

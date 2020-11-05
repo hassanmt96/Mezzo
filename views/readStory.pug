@@ -5,7 +5,7 @@ block content
         h2.subtitle=story.subtitle
     .userContainer
         img(src="https://w0286994blog.files.wordpress.com/2016/04/bear.jpg")
-        p.author= ${story.User.firstName} ${story.User.lastName}
+        p.author= `${story.User.firstName} ${story.User.lastName}`
         button.btn#followBtn(type='submit') Follow
     .storyImgContainer
         img#storyImg(src=story.image)
