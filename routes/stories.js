@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator')
 const { asyncHandler, handleValidationErrors, csrfProtection } = require('../utils');
-const { Story, User } = require('../db/models');
+const { Story, User, Like } = require('../db/models');
 
 
 const storyValidator = [
@@ -25,10 +25,38 @@ const storyValidator = [
 /* GET full story view */
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const storyId = parseInt(req.params.id);
-  const story = await Story.findByPk(storyId, { include: User });
-  console.log(story);
-  res.render('readStory', { story });
+  const story = await Story.findByPk(storyId, { include: [ User, Like ]});
+  let isLiked = false;
+  story.Likes.forEach((like)=> {
+    const { userId } = like;
+    if(userId === res.locals.user.id){
+      isLiked = true;
+    }
+  })
+  res.render('readStory', { story, isLiked });
+  // res.render('readStory', { story });
 }));
+
+
+router.post('/:id/like', asyncHandler(async(req, res)=> {
+  const story = await Story.findByPk(req.params.id, { include: [ User, Like ]});
+  let isLiked = false;
+  const storyId = req.params.id;
+  const userId = res.locals.user.id;
+  story.Likes.forEach((like)=> {
+    const { userId } = like;
+    if(userId === res.locals.user.id){
+      isLiked = true;
+    }
+  })
+  if(!isLiked){
+    await Like.create({ storyId, userId });
+  } else {
+    let likes = await Like.findOne({ where: {storyId: req.params.id, userId: res.locals.user.id }});
+    await likes.destroy();
+  }
+  res.json(isLiked);
+}))
 
 //CRUD OPERATIONS GO HERE
 router.get('/create', csrfProtection, asyncHandler(async(req, res) => {
@@ -45,6 +73,8 @@ router.post('/create', asyncHandler(async(req, res, next) => {
   })
    res.redirect(`/stories/${newStory.id}`);
 }));
+
+
 
 
 
