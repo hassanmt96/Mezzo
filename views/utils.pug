@@ -1,12 +1,14 @@
 mixin validationErrorSummary(errors)
   if errors
-    div(class='alert alert-danger' role='alert')
-      p The following error(s) occurred:
-      ul
-        each error in errors
-          li= error
+    div(class="user-error-div")
+      p.user-error-title The following error(s) occurred:
+      div
+        ul.user-error-list
+          each error in errors
+            li.user-error-item= error
 
 mixin field(labelText, fieldName, fieldValue, fieldType = 'text')
   div(class='form-group')
     label(for=fieldName)= labelText
     input(type=fieldType id=fieldName name=fieldName value=fieldValue class='form-control')
+

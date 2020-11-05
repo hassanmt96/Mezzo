@@ -8,9 +8,10 @@ const res = await fetch('/read-a-story', {
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON. stringify(like)
+    body: JSON.stringify(like)
 })
 const story = await res.json();
 likeButton.innerHTML = 'Liked'
 })
+
 })

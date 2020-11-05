@@ -26,9 +26,14 @@ const storyValidator = [
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const storyId = parseInt(req.params.id);
   const story = await Story.findByPk(storyId, { include: User });
-  console.log(story);
+
+  const liked = false;
   res.render('readStory', { story });
 }));
+
+router.post('/:id(\\d+)', asyncHandler(async(req, res)=> {
+  res.render('readStory');
+}))
 
 //CRUD OPERATIONS GO HERE
 router.get('/create', asyncHandler(async(req, res) => {
@@ -45,6 +50,8 @@ router.post('/create', csrfProtection, asyncHandler(async(req, res, next) => {
   })
    res.redirect(`/${newStory.id}`);
 }));
+
+
 
 
 
