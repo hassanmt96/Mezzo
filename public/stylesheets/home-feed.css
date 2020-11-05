@@ -33,7 +33,8 @@
 }
 
 .feed-story-image-container:hover {
-	max-height: 600px;
+    max-height: 600px;
+    transition-delay: 250ms;
 	transition-duration: 1000ms;
 	transition-property: max-height;
 }
