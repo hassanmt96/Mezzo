@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", (e) => {
+    console.log('test');
     const likeButton = document.getElementById('likeBtn');
 likeButton.addEventListener('click', async(e) => {
     e.preventDefault();
