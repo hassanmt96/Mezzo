@@ -118,14 +118,21 @@ router.post(
       }
       errors.push('Login failed. Please provide correct input for either fields.')
     } else {
-       errors = validationErrors.array().map((error) => error.msg)
-       res.render('login', {errors})
+      errors = validationErrors.array().map((error) => error.msg)
+      res.render('login', { errors })
     }
     res.render('login', { title: "Login", token: req.csrfToken(), errors, email })
   })
 );
 
 //LOGOUT ROUTE 
+
+router.get("/logout",
+  asyncHandler(async (req, res, next) => {
+    await logoutUser(req, res);
+    res.redirect("/");
+  })
+);
 
 router.post(
   "/logout",
