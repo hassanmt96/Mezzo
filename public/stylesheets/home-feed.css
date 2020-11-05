@@ -1,0 +1,20 @@
+.feed-main-header {
+    font-weight: 700;
+    text-align: center;
+
+}
+
+.feed-main-underline {
+    background-color:  #a5fccd;
+    height: 5px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    border-radius: 10px 40px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.feed-story-image {
+    max-width: 600px;
+}
