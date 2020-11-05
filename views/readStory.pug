@@ -1,6 +1,7 @@
 extends layout.pug
 block content
     .header
+        input(type="hidden" value=story.id id="story-Id")
         h1.title=story.title
         h2.subtitle=story.subtitle
     .userContainer
