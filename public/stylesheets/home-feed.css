@@ -20,10 +20,14 @@
 	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.preview {
+    margin: 0px auto;
+    max-width: 600px;
+}
+
 .feed-story-image {
 	max-width: 600px;
 	margin-top: 10px;
-	margin-left: 25px;
 }
 
 .feed-story-title-container {
@@ -35,16 +39,13 @@
 	font-weight: bold;
     text-decoration: underline;
     text-decoration-color:  #4af99b;
-	padding-left: 25px;
 }
 
 .feed-story-subtitle {
-    padding-left: 25px;
     font-size: 14pt;
 }
 
 .feed-story-content {
-    padding-left: 25px;
     font-size: 12pt;
     max-width: 600px;
     overflow: hidden;
