@@ -12,17 +12,27 @@ html
           img(class='logo' src='/images/Copy of mezzo..png')
       .header-nav-buttons
         input#search(type="search" placeholder="search")
-      div.avatar-container
-        img.avatar(src="/images/person-avatar-Imgur.jpg")
+
       if !locals.authenticated
         .buttonContainer
+          .dropdown.dropbtn
+            img.avatar(src="/images/person-avatar-Imgur.jpg")
+            .dropdowncontent
+              ul
+                li
+                  a.hidden(href="/create-a-story") Create Story
+                li
+                  a.hidden(href="/") Log Out
+                li
+                  a.hidden(href="/delete-a-user") Delete Account
           form(action="/users/login", method="get")
             button.header-nav-buttons#login(href='/users/login') Login
           form(action="/users/register", method="get")
             button.header-nav-buttons#register(href='/users/register') Register
+
       else
           button#upgrade(name="upgrade") Upgrade
-          img.header-nav-bar#userIcon(name="userIcon")
+          img.header-nav-bar#userIcon(src="/images/person-avatar-Imgur.jpg")
           div.dropdown.hidden
             a.hidden(href="/create-a-story") Create Story
             a.hidden(href="/") Log Out
