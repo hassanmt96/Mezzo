@@ -1,19 +1,38 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Stories', [{
-      title: 'A Story About Music',
-      subtitle: 'This writing is, indeed, about music, somehow.',
-      content: 'words words words words words words words words words words words words words words words words words words words words words words words words',
-      authorId: 1,
-      image: 'https://cdn11.bigcommerce.com/s-8wy6p2/images/stencil/1500x1000/uploaded_images/article.png?t=1575561837',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }], {});
-  },
+	up: (queryInterface, Sequelize) => {
+		return queryInterface.bulkInsert(
+			"Stories",
+			[
+				{
+					title: "A Story About Music",
+					subtitle: "This writing is, indeed, about music, somehow.",
+					content:
+						"words words words words words words words words words words words words words words words words words words words words words words words words",
+					authorId: 1,
+					image:
+						"https://cdn11.bigcommerce.com/s-8wy6p2/images/stencil/1500x1000/uploaded_images/article.png?t=1575561837",
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: "Why the Trumpet is the World's Greatest Instrument",
+					subtitle: "The answer may suprise you!",
+					content:
+						"words words words words words words words words words words words words words words words words words words words words words words words words",
+					authorId: 1,
+					image:
+						"https://abeautifultrenchitwas.com/wp-content/uploads/trumpet-perspective.jpg",
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+			],
+			{}
+		);
+	},
 
-  down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('Stories', null, {});
-  }
+	down: (queryInterface, Sequelize) => {
+		return queryInterface.bulkDelete("Stories", null, {});
+	},
 };
