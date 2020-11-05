@@ -25,10 +25,22 @@ const storyValidator = [
 /* GET full story view */
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const storyId = parseInt(req.params.id);
-  const story = await Story.findByPk(storyId, { include: User }, { include: Comment });
+  const story = await Story.findByPk(storyId, {
+    include: User
+  });
+  const comments = await Comment.findAll({
+    where: storyId
+  });
 
-  res.render('readStory', { story });
+  res.render('readStory', { story, comments });
 }));
+
+// router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+//   const storyId = parseInt(req.params.id);
+//   const story = await Story.findByPk(storyId, { include: User, Comment });
+
+//   res.render('readStory', { story });
+// }));
 
 //CRUD OPERATIONS GO HERE
 router.get('/create', csrfProtection, asyncHandler(async(req, res) => {

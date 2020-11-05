@@ -8,6 +8,9 @@ block content
         img(src="https://w0286994blog.files.wordpress.com/2016/04/bear.jpg")
         p.author= `${story.User.firstName} ${story.User.lastName}`
         button.btn#followBtn(type='submit') Follow
+    if locals.authenticated
+        form(action="/stories", method="get")
+            //- button.btn#deleteBtn(type='submit'href='/delete') Delete
     .storyImgContainer
         img#storyImg(src=story.image)
     div.story
@@ -16,6 +19,7 @@ block content
         button.btn#likeBtn(type='submit') Like
         textarea.comment(name="comment") Have thoughts?
         button.btn#commentBtn(type='submit') Comment
-    //-     each comment in story.Comment.comment
-    //-         div.comment
-    //-             p=comment.comment
+
+        each comment in comments
+            div.comment
+                p=comment.comment
