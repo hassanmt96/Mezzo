@@ -5,7 +5,7 @@ const { asyncHandler, handleValidationErrors } = require('../utils');
 
 
 /* GET home page. */
-router.get('/', requireAuth, function (req, res, next) {
+router.get('/', function (req, res, next) {
   console.log('test')
   res.render('index', { title: 'Mezzo' });
   // res.send('test')
