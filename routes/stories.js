@@ -40,7 +40,8 @@ router.post('/create', asyncHandler(async(req, res, next) => {
     title: req.body.title,
     subtitle: req.body.subtitle,
     content: req.body.content,
-    author: res.locals.user.id,
+    authorId: res.locals.user.id,
+    image: req.body.image
   })
    res.redirect(`/stories/${newStory.id}`);
 }));
