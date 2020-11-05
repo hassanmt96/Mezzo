@@ -10,7 +10,7 @@ router.get('/', asyncHandler(async(req, res, next) => {
   const stories = await Story.findAll({ order: [['title', 'ASC']]});
   // const followerId = /* insert session user.id */
   // const following = await Follow.findAll({ where: followerId });
-  //for (each follow in following) {
+  // for (each follow in following) {
   //  const authorId = follow.followingId;
   //}
   // const followingStories = await Story.findAll({ where: authorId });
