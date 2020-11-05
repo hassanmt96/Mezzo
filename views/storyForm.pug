@@ -5,6 +5,7 @@ block content
         .story-form-div
             form(action="/stories/create", method="post" class="user-form")
                 .story-headers
+                    input(type="hidden" name="_csrf" value=token)
                     .story-label
                         label Title
                     .user-field
@@ -17,5 +18,9 @@ block content
                     label Story
                 .story-field
                     textarea(name="content" required class="story-textarea" rows="30" cols="70")
+                .story-label
+                    label Image
+                .story-field
+                    input.user-field(type="text" name="image" required)
                 .user-button
                     button(type="submit" class="login-button") Publish
