@@ -9,6 +9,7 @@ const { Story, Follow, User } = require('../db/models');
 router.get('/', asyncHandler(async(req, res, next) => {
   const stories = await Story.findAll({ order: [['title', 'ASC']]});
   const userId = res.locals.user.id;
+  console.log(`THIS IS THE ID: ${userId}`)
 
   const following = await Follow.findAll({ where: { followerId: userId } }).map(async(follow) => ({
     id: follow.id,
@@ -27,7 +28,6 @@ router.get('/', asyncHandler(async(req, res, next) => {
   }
   res.render('index', { stories, followingStories });
 }));
-
 
 
 
