@@ -1,13 +1,17 @@
 extends layout.pug
-
 block content
-
-    h1=story.title
-    h2=story.subtitle
-    p= `${story.User.firstName} ${story.User.lastName}`
-    div
-        button.btn(type='submit') Follow
-    div
-        img(src=story.image)
-    div
+    .header
+        h1.title=story.title
+        h2.subtitle=story.subtitle
+    .userContainer
+        img(src="https://w0286994blog.files.wordpress.com/2016/04/bear.jpg")
+        p.author= `${story.User.firstName} ${story.User.lastName}`
+        button.btn#followBtn(type='submit') Follow
+    .storyImgContainer
+        img#storyImg(src=story.image)
+    div.story
         h3=story.content
+    div.commentsContainer
+        button.btn#likeBtn(type='submit') Like
+        textarea.comment(name="comment") Have thoughts?
+        button.btn#commentBtn(type='submit') Comment
