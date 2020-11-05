@@ -8,13 +8,24 @@ const { Story, Follow, User } = require('../db/models');
 /* GET home page/feed */
 router.get('/', asyncHandler(async(req, res, next) => {
   const stories = await Story.findAll({ order: [['title', 'ASC']]});
-  // const followerId = req.locals
-  // const following = await Follow.findAll({ where: followerId });
-  // for (each follow in following) {
-  //  const authorId = follow.followingId;
-  //}
-  // const followingStories = await Story.findAll({ where: authorId });
-  res.render('index', { stories });
+  const userId = res.locals.user.id;
+
+  const following = await Follow.findAll({ where: { followerId: userId } }).map(async(follow) => ({
+    id: follow.id,
+    followingId: follow.followingId,
+    followerId: follow.followerId
+  }));
+  console.log(following);
+  const authorIdArr = [];
+  for (let follow in following) {
+   const id = follow.followingId;
+   authorIdArr.push(id);
+  }
+  const followingStories = [];
+  for (authorId in authorIdArr) {
+    followingStories += await Story.findAll({ where: authorId });
+  }
+  res.render('index', { stories, followingStories });
 }));
 
 

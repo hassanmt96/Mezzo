@@ -15,9 +15,9 @@ block content
                     p.feed-story-content=story.content
                     p.feed-story-spacer .     .      .
         p.feed-main-header Stories from people you follow
-        //- if locals.authenticated
-        //-     each story in followingStories
-        //-         img(src=story.image)
-        //-         h1=story.title
-        //-         p=story.subtitle
-        //-         p=story.content
+            if locals.authenticated
+                each story in followingStories
+                    img(src=story.image)
+                    h1=story.title
+                    p=story.subtitle
+                    p=story.content
