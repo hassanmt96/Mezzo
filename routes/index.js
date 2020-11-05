@@ -8,7 +8,7 @@ const { Story, Follow, User } = require('../db/models');
 /* GET home page/feed */
 router.get('/', asyncHandler(async(req, res, next) => {
   const stories = await Story.findAll({ order: [['title', 'ASC']]});
-  // const followerId = /* insert session user.id */
+  // const followerId = req.locals
   // const following = await Follow.findAll({ where: followerId });
   // for (each follow in following) {
   //  const authorId = follow.followingId;
