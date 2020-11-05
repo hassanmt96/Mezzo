@@ -4,15 +4,17 @@ block content
     .user-form-holder
         .user-form-div
             form(action="/users/login" method='POST' class="user-form")
-                div.user-label
+                div
+                    input(type='hidden' name='_csrf' value=token)
+                .user-label
                     label Email
-                div.user-field
+                .user-field
                     input(type='text' name='email' required class="user-input")
-                div.user-label
+                .user-label
                     label Password
-                div.user-field
+                .user-field
                     input(type='password' name='password' required class="user-input")
-                div.user-button
+                .user-button
                     button(type='submit' class="login-button") Log in
             //- if user
             //-     p=user.firstName

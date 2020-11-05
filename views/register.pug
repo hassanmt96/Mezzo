@@ -6,7 +6,9 @@ block content
     .user-form-holder
         .user-form-div
             form(action="/users/register" method='POST' class="user-form")
-                div.user-label
+                div
+                    input(type='hidden' name='_csrf' value=token)
+                .user-label
                     label First Name
                 .user-field
                     input(type='text' name='firstName' required class="user-input")

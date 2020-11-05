@@ -12,7 +12,7 @@ router.get('/', asyncHandler(async(req, res, next) => {
   // const following = Follow.findAll({ where: followerId });
   // const authorId = following.followingId;
   // const followingStories = Story.findAll({ where: authorId });
-  res.render('index', { stories, followingStories });
+  res.render('index', { stories });
 }));
 
 
