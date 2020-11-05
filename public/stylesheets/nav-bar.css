@@ -57,3 +57,8 @@
     width: 150px;
     height: auto;
 }
+
+.avatar{
+    width: 40px;
+    border-radius: 50%;
+}
