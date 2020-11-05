@@ -1,7 +1,7 @@
 extends layout.pug
-
 block content
     .header
+        input(type="hidden" value=story.id id="story-Id")
         h1.title=story.title
         h2.subtitle=story.subtitle
     .userContainer
@@ -16,11 +16,15 @@ block content
     div.story
         h3=story.content
     div.commentsContainer
-        button.btn#likeBtn(type='submit') Like
+        if isLiked
+            button.btn#likeBtn(type='submit') Liked
+        else
+            button.btn#likeBtn(type='submit') Like
         textarea.comment(name="comment") Have thoughts?
         button.btn#commentBtn(type='submit') Comment
-
         each comment in comments
             div.comment
-                
+
                 p=comment.comment
+    script(src='/javascripts/ajax-likes.js')
+
