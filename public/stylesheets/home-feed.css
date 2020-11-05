@@ -1,20 +1,57 @@
-.feed-main-header {
-    font-weight: 700;
-    text-align: center;
+.feed-container {
+    background-color: #FCFFFD;
+    padding: 15px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
 
+.feed-main-header {
+	font-weight: 700;
+	text-align: center;
+	font-size: 18pt;
 }
 
 .feed-main-underline {
-    background-color:  #a5fccd;
-    height: 5px;
-    margin-bottom: 10px;
-    max-width: 600px;
-    border-radius: 10px 40px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
+	background-color: #4af99b;
+	height: 5px;
+	margin: 5px auto 10px auto;
+	max-width: 600px;
+	border-radius: 10px 40px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .feed-story-image {
+	max-width: 600px;
+	margin-top: 10px;
+	margin-left: 25px;
+}
+
+.feed-story-title-container {
+    margin-top: 25px;
+}
+
+.feed-story-title {
+	font-size: 16pt;
+	font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color:  #4af99b;
+	padding-left: 25px;
+}
+
+.feed-story-subtitle {
+    padding-left: 25px;
+    font-size: 14pt;
+}
+
+.feed-story-content {
+    padding-left: 25px;
+    font-size: 12pt;
     max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.feed-story-spacer {
+    
 }
