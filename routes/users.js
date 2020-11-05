@@ -52,6 +52,7 @@ const userValidator = [
       if (value !== req.body.password) {
         throw new Error('Passwords must match')
       }
+      return true;
     }),
 ];
 
@@ -154,7 +155,7 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
   });
   // console.log('success', user.toJSON());
   const validationErrors = validationResult(req)
-  // console.log(validationErrors)
+  console.log(validationErrors)
   if (validationErrors.isEmpty()) {
     const hash = await bcrypt.hash(password, 10)
     user.password = hash

@@ -3,7 +3,6 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-require("dotenv").config();
 const session = require("express-session");
 const { sessionSecret } = require("./config/index");
 const { loginUser, restoreUser } = require("./auth");
