@@ -23,11 +23,14 @@ drop down, create story, log out, delete account, categories */
 }
 
 #upgrade{
-    display: flex;
-    display: inline-block;
-    justify-content: flex-end;
-    color: white;
-    background-color: black;
+    display: inline;
+    width: 100px;
+	height: 33px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-color: #a5fccd;
+    font-size: 12pt;
+    margin: 4px 4px 4px 4px;
 }
 
 #register{
@@ -139,5 +142,6 @@ ul{
 }
 
 .buttoncontainer{
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
