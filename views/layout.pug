@@ -1,27 +1,30 @@
 doctype html
+
 html
   head
       title="Mezzo"
       link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel='stylesheet' href='/stylesheets/user-forms.css')
+      link(rel='stylesheet' href='/stylesheets/logged-in-nav-bar.css')
   body
-    div
-      div
-        img.header-nav-bar
-      div
-        input.header-nav-bar#search(type="search", name="search", placeholder="Search")
-      div
-        button.header-nav-bar.btn#upgrade(name="upgrade") Upgrade
-
-      if locals.authenticated
-        div
+    .header-nav-bar
+      .header-nav-logo
+          img(class='logo' src='/images/Copy of mezzo..png')
+      .header-nav-buttons
+        input#search(type="search" placeholder="search")
+        img(src="/images")
+      if !locals.authenticated
+        .buttonContainer
+          form(action="/users/login", method="get")
+            button.header-nav-buttons#login(href='/users/login') Login
+          form(action="/users/register", method="get")
+            button.header-nav-buttons#register(href='/users/register') Register
+      else
+          button#upgrade(name="upgrade") Upgrade
           img.header-nav-bar#userIcon(name="userIcon")
           div.dropdown.hidden
             a.hidden(href="/create-a-story") Create Story
             a.hidden(href="/") Log Out
             a.hidden(href="/delete-a-user") Delete Account
-      else
-          span(class='navbar-text px-4')
-            a(class='btn btn-sm btn-dark mr-2' href='/users/login') Login
-            a(class='btn btn-sm btn-dark' href='/users/register') Register
 
   block content

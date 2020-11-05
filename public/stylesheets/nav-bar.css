@@ -1,0 +1,59 @@
+/* *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: teal;
+}
+
+.header-nav-logo{
+    font-weight: 500px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+} */
+
+#register, #search, #login{
+    font-weight: 500px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+
+.header-nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%
+}
+
+.header-nav-logo{
+    display: flex;
+    display: inline-block;
+    justify-content: flex-start;
+}
+
+.header-nav-buttons{
+    display: flex;
+    display: inline-block;
+    justify-content: space-around;
+}
+
+#register{
+    color: white;
+    background-color: black;
+
+}
+
+#login{
+    color: white;
+    background-color: black;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.logo{
+    width: 150px;
+    height: auto;
+}
