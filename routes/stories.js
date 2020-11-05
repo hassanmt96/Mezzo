@@ -35,12 +35,12 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   res.render('readStory', { story, comments });
 }));
 
-// router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
-//   const storyId = parseInt(req.params.id);
-//   const story = await Story.findByPk(storyId, { include: User, Comment });
+router.post('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+  const storyId = parseInt(req.params.id);
+  const story = await Story.findByPk(storyId, { include: User, Comment });
 
-//   res.render('readStory', { story });
-// }));
+  res.render('readStory', { story });
+}));
 
 //CRUD OPERATIONS GO HERE
 router.get('/create', csrfProtection, asyncHandler(async(req, res) => {
