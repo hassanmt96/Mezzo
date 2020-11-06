@@ -16,10 +16,11 @@ html
         input#search(type="search" placeholder="search")
 
       if !locals.authenticated
-          form(action="/users/login", method="get")
-            button.header-nav-buttons#login(href='/users/login') Login
-          form(action="/users/register", method="get")
-            button.header-nav-buttons#register(href='/users/register') Register
+          .header-stuff-buttons
+            form(action="/users/login", method="get")
+              button.header-nav-buttons#login(href='/users/login') Login
+            form(action="/users/register", method="get")
+              button.header-nav-buttons#register(href='/users/register') Register
 
       else
           .buttonContainer

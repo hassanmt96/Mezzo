@@ -48,6 +48,34 @@ router.post('/create', csrfProtection, asyncHandler(async(req, res, next) => {
 
 
 
+//FOLLOW ROUTES GO HERE 
+
+
+router.get("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
+  const follower = await Follow.findOne({
+    where: { followingId: req.params.id },
+    include: {
+      model: User,
+      as: "Follower",
+      attributes: ["id", "firstName", "lastName"]
+    },
+  })
+  res.json(follower)
+}))
+
+
+//GETS A LIST OF FOLLOWERS FOR A SPECIFIC USER
+router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
+    const followers = await Follow.findAll({
+      where: { followingId: req.params.id },
+      include: {
+        model: User,
+        as: "Follower",
+        attributes: ["id", "firstName", "lastName"]
+      },
+    })
+   res.json(followers)
+  }))
 
 
 module.exports = router;
