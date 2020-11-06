@@ -11,14 +11,12 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.get(`/stories`, asyncHandler(async(req, res) => {
     let stories;
     let error = '';
-    console.log(req.query.term);
     try {
       stories = await storyRepo.searchStories(`%${req.query.term}%`);
     } catch (e) {
       console.error(e);
       error = `An error ocurred that reads "${e.message}". Check the console for more details.`;
     }
-    console.log(stories);
     res.render('index.pug', {//check this line check which pug file
         listTitle: 'Search Results',
         error,
