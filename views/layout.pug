@@ -32,7 +32,7 @@ html
                   li
                     a.hidden(href="/users/logout") Log Out
                   li
-                    a.hidden(href="/delete-a-user") Delete Account
+                    a.hidden(href=`/users/${locals.user.id}/destroy`) Delete Account
             button#upgrade(name="upgrade") Upgrade
           //- div.dropdown.hidden
           //-   a.hidden(href="/create-a-story") Create Story

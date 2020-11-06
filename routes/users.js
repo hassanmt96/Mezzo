@@ -187,6 +187,54 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
 
 //DELETE ROUTE GOES HERE >>><<<<<<
 
+// router.delete("/:username/",(request, response) {
+//   var username = request.params.username;
+ 
+//   request.db.get('users').remove({'username': username}, function(error, document) {
+//    if (error) response.send(error);
+//    return response.send("deleted");
+//   });
+//  });
+
+//  router.get('/delete', asyncHandler(async(req, res)=>{
+//     if(user){
+//         res.redirect('delete')
+//       } else{
+//           res.redirect('/')
+//       //   }
+      
+//        }))
+      // router.delete('/delete', asyncHandler(async(req, res)=>{
+      //   console.log('this user is trying to be deleted')
+      //   // const user = await User.findByPk(req.);
+      //   // if(user){
+      //   //   res.render('delete')
+      //   // }
+      //   await User.destroy({
+        //       where: {
+          //           id: res.locals.user.id
+          //         }
+          //       })
+          //       console.log('account has been deleted.')
+          //     }))
+          router.get('/:id(\\d+)/destroy', asyncHandler(async(req, res)=>{
+            console.log('this is testing destroyyyyyy')
+            await logoutUser(req, res)
+            const user = await User.findByPk(req.params.id)
+            user.destroy()
+            res.redirect('/')
+            
+          }))
+          
+          router.delete('/:id(\\d+)/destroy', asyncHandler(async(req, res)=>{
+            console.log('testing the destroy')
+          const user = await User.findByPk(req.param.id)
+          user.destroy()
+          res.status(204)
+        }))
+
+
+
 module.exports = router;
 
 //LOGIN & SIGNUP ROUTES GO HERE
