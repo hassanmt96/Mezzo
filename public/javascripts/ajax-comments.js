@@ -19,7 +19,13 @@ window.addEventListener('DOMContentLoaded', (e) => {
         const returnedComments = Array.from(jsonRes)
         // console.log(returnedComments)
         returnedComments.forEach((comment) => {
-            let html = `<p>${comment.comment}</p>`
+            let html = `
+            <div id='comments'>
+                <div class='comment'>
+                    <p>${comment.comment}</p>
+                    <p class='commentDate'>Posted ${comment.createdAt}</p>
+                </div>
+            </div>`
             commentsHtml.push(html);
         });
         comments.innerHTML = ''
