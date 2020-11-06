@@ -27,8 +27,15 @@ const storyValidator = [
 router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const storyId = parseInt(req.params.id);
   const story = await Story.findByPk(storyId, {
-    include: User
+    include: [User, Like]
   });
+   let isLiked = false;
+		story.Likes.forEach((like) => {
+			const { userId } = like;
+			if (userId === res.locals.user.id) {
+				isLiked = true;
+			}
+		});
   const isFollowingId = story.User.id
   const userId = res.locals.user.id
   let follow = await Follow.findOne({ where: { userId, isFollowingId } })
@@ -37,7 +44,7 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
     where: { storyId }
   });
   console.log(comments);
-  res.render('readStory', { story, comments, follow });
+  res.render('readStory', { story, comments, follow, isLiked });
 }));
 
 router.post('/:id(\\d+)/comment', asyncHandler(async (req, res) => {
