@@ -29,15 +29,17 @@ module.exports = (sequelize, DataTypes) => {
     const followMapping = {
       through: "Follow",
       otherKey: "id",
-      foreignKey: "followingId"
+      foreignKey: "userId"
     }
     const followerMapping = {
       through: "Follow",
       otherKey: "id",
-      foreignKey: "followerId"
+      foreignKey: "isFollowingId"
     }
-		User.hasMany(models.Follow, { as: "follower", followerMapping });
-    User.hasMany(models.Follow, { as: "following", followMapping });
+	User.hasMany(models.Follow, { as:'user', foreignKey:'userId' });
+	User.hasMany(models.Follow, { as:'followed', foreignKey:'isFollowingId' });
+	// User.belongsToMany(models.User, {through:"Follows", as:'isfollowing', foreignKey:"userId"})
+	// User.belongsToMany(models.User, {through:"Follows", as:'user', foreignKey:"isFollowingId"})
     User.hasMany(models.Story, {foreignKey: "authorId"})
     User.hasMany(models.Like, {foreignKey: "userId"})
     User.hasMany(models.Comment, {foreignKey: "userId"})

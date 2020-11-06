@@ -16,10 +16,11 @@ html
         input#search(type="search" placeholder="search")
 
       if !locals.authenticated
-          form(action="/users/login", method="get")
-            button.header-nav-buttons#login(href='/users/login') Login
-          form(action="/users/register", method="get")
-            button.header-nav-buttons#register(href='/users/register') Register
+          .header-stuff-buttons
+            form(action="/users/login", method="get")
+              button.header-nav-buttons#login(href='/users/login') Login
+            form(action="/users/register", method="get")
+              button.header-nav-buttons#register(href='/users/register') Register
 
       else
           .buttonContainer
@@ -32,7 +33,7 @@ html
                   li
                     a.hidden(href="/users/logout") Log Out
                   li
-                    a.hidden(href="/delete-a-user") Delete Account
+                    a.hidden(href=`/users/${locals.user.id}/destroy`) Delete Account
             button#upgrade(name="upgrade") Upgrade
           //- div.dropdown.hidden
           //-   a.hidden(href="/create-a-story") Create Story

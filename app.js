@@ -12,7 +12,6 @@ const store = new SequelizeStore({
 	db: sequelize,
 });
 
-// const likesRouter = require("./routes/likes")
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const storyRouter = require('./routes/stories')
@@ -47,7 +46,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/stories", storyRouter);
-// app.use("/stories/likes", likesRouter)
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {
