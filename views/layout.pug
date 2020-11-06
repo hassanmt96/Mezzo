@@ -15,9 +15,9 @@ html
         a(href="/")
           img(class='logo' src='/images/Copy of mezzo..png')
       .header-nav-buttons
-        form(action='/stories')
+        form.search(action='/stories')
           input#search(type="search" placeholder="search" name="term" required)
-          button 🔍
+          button#searchBtn 🔍
       form(action="/about", method="get")
         button.header-nav-buttons#about(href='/about') About
       if !locals.authenticated
