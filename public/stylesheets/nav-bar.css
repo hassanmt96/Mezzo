@@ -38,6 +38,10 @@
     justify-content: space-around;
 }
 
+.header-nav-buttons::after{
+    content: '🔍';
+}
+
 #register{
     color: white;
     background-color: black;

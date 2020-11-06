@@ -13,7 +13,8 @@ html
         a(href="/")
           img(class='logo' src='/images/Copy of mezzo..png')
       .header-nav-buttons
-        input#search(type="search" placeholder="search")
+        form(action='/stories')
+          input#search(type="search" placeholder="search")
 
       if !locals.authenticated
           form(action="/users/login", method="get")
