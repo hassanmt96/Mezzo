@@ -8,20 +8,23 @@ const storyRepo = require('../public/javascripts/searchquery');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
-router.get('/', async (req, res) => {
+router.get(`/stories`, asyncHandler(async(req, res) => {
     let stories;
+    let error = '';
+    console.log(req.query.term);
     try {
       stories = await storyRepo.searchStories(`%${req.query.term}%`);
     } catch (e) {
       console.error(e);
       error = `An error ocurred that reads "${e.message}". Check the console for more details.`;
     }
-    res.render('readStory.pug', {//check this line check which pug file
-      listTitle: 'Search Results',
-      error,
-      stories,
+    console.log(stories);
+    res.render('index.pug', {//check this line check which pug file
+        listTitle: 'Search Results',
+        error,
+        stories
     });
-  });
+  }));
 
 
 

@@ -38,7 +38,7 @@
     justify-content: space-around;
 }
 
-.header-nav-buttons::after{
+.header-nav-buttons::before{
     content: '🔍';
 }
 

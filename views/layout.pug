@@ -14,7 +14,8 @@ html
           img(class='logo' src='/images/Copy of mezzo..png')
       .header-nav-buttons
         form(action='/stories')
-          input#search(type="search" placeholder="search")
+          input#search(type="search" placeholder="search" name="term" required)
+          button 🔍
 
       if !locals.authenticated
           form(action="/users/login", method="get")
