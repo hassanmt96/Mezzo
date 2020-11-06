@@ -1,13 +1,31 @@
 extends layout.pug
-
 block content
-
-    h1=story.title
-    h2=story.subtitle
-    p= `${story.User.firstName} ${story.User.lastName}`
-    div
-        button.btn(type='submit') Follow
-    div
-        img(src=story.image)
-    div
+    .header
+        input(type="hidden" value=story.id id="story-Id")
+        h1.title=story.title
+        h2.subtitle=story.subtitle
+    .userContainer
+        img(src="https://w0286994blog.files.wordpress.com/2016/04/bear.jpg")
+        p.author= `${story.User.firstName} ${story.User.lastName}`
+        button.btn#followBtn(type='submit') Follow
+    if locals.authenticated
+        form(action="/stories", method="get")
+            //- button.btn#deleteBtn(type='submit'href='/delete') Delete
+    .storyImgContainer
+        img#storyImg(src=story.image)
+    div.story
         h3=story.content
+    div.commentsContainer
+        if isLiked
+            button.btn#likeBtn(type='submit') Liked
+        else
+            button.btn#likeBtn(type='submit') Like
+        form(action=`/stories/${story.id}/comment`, method="post")
+            textarea.comment#commentBody(name="comment") Have thoughts?
+            button.btn#commentBtn(type='submit') Comment
+        #comments
+            each comment in comments
+                div.comment
+                    p=comment.comment
+    script(src='/javascripts/ajax-likes.js')
+    script(src='/javascripts/ajax-comments.js')
