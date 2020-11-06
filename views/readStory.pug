@@ -23,8 +23,9 @@ block content
         form(action=`/stories/${story.id}/comment`, method="post")
             textarea.comment#commentBody(name="comment") Have thoughts?
             button.btn#commentBtn(type='submit') Comment
-        each comment in comments
-            div.comment#comments
-                p=comment.comment
+        #comments
+            each comment in comments
+                div.comment
+                    p=comment.comment
     script(src='/javascripts/ajax-likes.js')
     script(src='/javascripts/ajax-comments.js')

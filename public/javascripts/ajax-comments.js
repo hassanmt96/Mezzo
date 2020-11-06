@@ -14,12 +14,15 @@ window.addEventListener('DOMContentLoaded', (e) => {
 				});
         const jsonRes = await res.json();
         console.log(jsonRes);
-        // const comments = document.getElementById('comments');
-        // let commentsHtml = [];
-        // Array.from(res).forEach((comment) => {
-        //     let html = `<p>${comment.comment}</p>`
-        //     commentsHtml.push(html);
-        // });
-        // comments.innerHTML = commentsHtml.join('');
+        const comments = document.getElementById('comments');
+        let commentsHtml = [];
+        const returnedComments = Array.from(jsonRes)
+        // console.log(returnedComments)
+        returnedComments.forEach((comment) => {
+            let html = `<p>${comment.comment}</p>`
+            commentsHtml.push(html);
+        });
+        comments.innerHTML = ''
+        comments.innerHTML = commentsHtml.join('');
     })
 })
