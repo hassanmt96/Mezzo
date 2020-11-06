@@ -163,7 +163,7 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
   });
   // console.log('success', user.toJSON());
   const validationErrors = validationResult(req)
-  console.log(validationErrors)
+  // console.log(validationErrors)
   if (validationErrors.isEmpty()) {
     const hash = await bcrypt.hash(password, 10)
     user.password = hash
@@ -172,7 +172,7 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
     res.redirect('/')
   } else {
     const errors = validationErrors.array().map((error) => error.msg)
-    console.log(errors)
+    // console.log(errors)
     res.render("register", {
       title: "Register",
       user,
