@@ -151,7 +151,7 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
 
   //DELETE THE FOLLOW FOR A USER
   
-  router.get()
+
 
 
 
