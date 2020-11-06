@@ -48,7 +48,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/stories", storyRouter);
 app.use("/", searchRouter);
-// app.use("/stories/likes", likesRouter)
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {

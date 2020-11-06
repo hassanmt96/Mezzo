@@ -12,8 +12,9 @@ block content
             .userContainer
                 img#authorImg(src="https://w0286994blog.files.wordpress.com/2016/04/bear.jpg")
                 p.author= `${story.User.firstName} ${story.User.lastName}`
-                if isLiked
-                    button.btn#followBtn(type='submit') Followed
+                input(type='hidden' value=story.User.id id='authorId')
+                if follow 
+                    button.btn#followBtn(type='submit') Unfollow
                 else
                     button.btn#followBtn(type='submit') Follow
             if locals.authenticated
@@ -39,3 +40,4 @@ block content
                             p.commentDate= `Posted ${comment.createdAt}`
     script(src='/javascripts/ajax-likes.js')
     script(src='/javascripts/ajax-comments.js')
+    script(src='/javascripts/ajax-follows.js')

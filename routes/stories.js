@@ -28,11 +28,15 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const story = await Story.findByPk(storyId, {
     include: User
   });
+  const isFollowingId = story.User.id
+  const userId = res.locals.user.id
+  let follow = await Follow.findOne({ where: { userId, isFollowingId } })
+  
   const comments = await Comment.findAll({
     where: { storyId }
   });
   console.log(comments);
-  res.render('readStory', { story, comments });
+  res.render('readStory', { story, comments, follow });
 }));
 
 router.post('/:id(\\d+)/comment', asyncHandler(async (req, res) => {
@@ -138,25 +142,12 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
 }))
 
 
-router.get("/:id(\\d+)/follows", asyncHandler(async (req, res) => {
-
-  const isFollowingId = req.params.id
-  const userId = res.locals.user.id
-  let follow = await User.findByPk(userId, {include:[{model:User, as:'isFollowing'}]})
-  // await Follow.create({
-  //   isFollowingId,
-  //   userId,
-  // })
-  //  if(followingId === isFollowingId) res.status(304).render('profile')
-  res.json(follow)
-  //     const follow = follow.findOne({where: followNew})
-  //     const following = await User.findByPk(req.body.followingId)
-
-}))
-
 //DELETE THE FOLLOW FOR A USER
 
 
+//  if(followingId === isFollowingId) res.status(304).render('profile')
+//     const follow = follow.findOne({where: followNew})
+//     const following = await User.findByPk(req.body.followingId)
 
 
 
