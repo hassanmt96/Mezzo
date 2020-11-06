@@ -9,6 +9,11 @@ drop down, create story, log out, delete account, categories */
     font-size: 18px;
 }
 
+.header-stuff-buttons{
+    display:flex;
+    justify-content: flex-end;
+}
+
 .header-nav-logo{
     display: flex;
     display: inline-block;
@@ -63,6 +68,7 @@ drop down, create story, log out, delete account, categories */
 	background-color: #a5fccd;
     font-size: 12pt;
     margin: 4px 4px 4px 4px;
+    /* padding-right: 20px; */
 }
 
 #login:hover{
@@ -85,6 +91,7 @@ drop down, create story, log out, delete account, categories */
     font-size: 16px;
     color: black;
     text-decoration: none;
+    width: 300px;
 }
 
 .avatarcontainer{
