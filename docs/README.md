@@ -13,6 +13,10 @@ Mezzo is **the** destination for musicians to share their personal experiences w
 
 ### Technologies Used
 
+Mezzo's server is built on the popular framework, Express. We have a PostgreSQL database, which the server manages utilizing Sequelize. Our logins are handled using the npm package, express-session, which easily allows us to authenticate users, log them outn and protect routes that we do not want guests to have access to, such as the full stories. Our front-end consists of Pug templates, hand-styled css, and javascript.
+
+With AJAX requests, our users are able to like, follow, and even make comments, all without refreshing the webpage. Our Pug templates are dynamic, and allow the user to tell at a glance if they have previously liked or followed someone.
+
 
 You can view details about all of this and more, on [our wiki](https://github.com/sal-wav/Mezzo/wiki)!
 
