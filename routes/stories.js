@@ -43,7 +43,6 @@ router.post('/:id(\\d+)/comment', asyncHandler(async(req, res) => {
   });
   // console.log('test')
   const {comment} = req.body
-  await res.json(req.body)
   await Comment.create({
     userId: res.locals.user.id,
     storyId: req.params.id,
@@ -52,6 +51,7 @@ router.post('/:id(\\d+)/comment', asyncHandler(async(req, res) => {
   const comments = await Comment.findAll({
     where: { storyId }
   });
+  console.log(comments)
   res.json(comments);
 }));
 
