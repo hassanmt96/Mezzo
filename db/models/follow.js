@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
 	const Follow = sequelize.define(
 		"Follow",
 		{
-			followingId: {
+			userId: {
 				type: DataTypes.INTEGER,
 				allowNull: false,
 			},
-			followerId: {
+			isFollowingId: {
 				type: DataTypes.INTEGER,
 				allowNull: false,
 			},
@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
 		{}
 	);
 	Follow.associate = function (models) {
-		Follow.belongsTo(models.User, { foreignKey: "followerId" });
-		Follow.belongsTo(models.User, { foreignKey: "followingId" });
+		Follow.belongsTo(models.User, { foreignKey: "isFollowingId" });
+		Follow.belongsTo(models.User, { foreignKey: "userId" });
 	};
 	return Follow;
 };
