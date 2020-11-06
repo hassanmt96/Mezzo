@@ -46,7 +46,7 @@
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: #fcfffd;
-    padding: 15px;
+    padding: 10px 30px;
     margin: 0 auto;
 }
 
@@ -76,12 +76,14 @@
 
 .commentForm {
     display: flex;
-    padding: 0 30px 0 30px;
-    margin-bottom: 30px;
+    flex-direction: row;
+    grid-template-columns: auto;
+    /* padding: 0 30px 0 30px; */
+    /* margin-bottom: 30px; */
+    margin: 0 30px 30px 30px;
 }
 
 #commentBody {
-    display: inline;
     border-radius: 3px;
     border: 1px solid lightgray;
     text-align: center;
@@ -111,10 +113,12 @@
 }
 
 .likeBtnContainer {
-    display: flex;
+    margin-right: 30px;
+    display: grid;
+    grid-template-columns: auto;
 }
 
-#followBtn, #likeBtn, #commentBtn {
+.btn {
     width: 100px;
 	height: 33px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
@@ -122,5 +126,9 @@
 	background-color: #a5fccd;
     font-size: 12pt;
     margin: 4px 4px 4px 4px;
+    justify-self: flex-end;
 }
 
+#commentBtn {
+    margin-left: 19px;
+}
