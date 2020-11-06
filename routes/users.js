@@ -1,13 +1,13 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
-const { User } = require("../db/models");
+const { User, Follow } = require("../db/models");
 const { asyncHandler, csrfProtection, handleValidationErrors, } = require("../utils");
 const { loginUser, logoutUser } = require("../auth");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
 const isPassword = async (password, hash) =>
-await bcrypt.compare(password, hash);
+  await bcrypt.compare(password, hash);
 const db = require('../db/models');
 const { token } = require("morgan");
 
@@ -189,7 +189,7 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
 
 // router.delete("/:username/",(request, response) {
 //   var username = request.params.username;
- 
+
 //   request.db.get('users').remove({'username': username}, function(error, document) {
 //    if (error) response.send(error);
 //    return response.send("deleted");
@@ -202,30 +202,54 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
 //       } else{
 //           res.redirect('/')
 //       //   }
-      
+
 //        }))
-      // router.delete('/delete', asyncHandler(async(req, res)=>{
-      //   console.log('this user is trying to be deleted')
-      //   // const user = await User.findByPk(req.);
-      //   // if(user){
-      //   //   res.render('delete')
-      //   // }
-      //   await User.destroy({
-        //       where: {
-          //           id: res.locals.user.id
-          //         }
-          //       })
-          //       console.log('account has been deleted.')
-          //     }))
-          router.get('/:id(\\d+)/destroy', asyncHandler(async(req, res)=>{
-            console.log('this is testing destroyyyyyy')
-            await logoutUser(req, res)
-            const user = await User.findByPk(req.params.id)
-            user.destroy()
-            res.redirect('/')
-            
-          }))
-        
+// router.delete('/delete', asyncHandler(async(req, res)=>{
+//   console.log('this user is trying to be deleted')
+//   // const user = await User.findByPk(req.);
+//   // if(user){
+//   //   res.render('delete')
+//   // }
+//   await User.destroy({
+//       where: {
+//           id: res.locals.user.id
+//         }
+//       })
+//       console.log('account has been deleted.')
+//     }))
+router.get('/:id(\\d+)/destroy', asyncHandler(async (req, res) => {
+  console.log('this is testing destroyyyyyy')
+  await logoutUser(req, res)
+  const user = await User.findByPk(req.params.id)
+  user.destroy()
+  res.redirect('/')
+
+}))
+
+
+// FOLLOWING AND UNFOLLOWING A SPECIFIC USER
+router.get("/:id(\\d+)/follows", asyncHandler(async (req, res) => {
+
+  const isFollowingId = req.params.id
+  const userId = res.locals.user.id
+  let follow = await Follow.findOne({ where: { userId, isFollowingId } })
+  //you cant follow yourself
+  if (parseInt(isFollowingId, 10) === parseInt(userId, 10))
+    // res.status(304)
+    res.json('same user try later')
+  else if (!follow) {
+    const newFollow = await Follow.create({
+      isFollowingId,
+      userId,
+    })
+    res.json('following')
+  } else {
+    follow.destroy()
+    res.json('unfollowed')
+  }
+  //ajax will be used to send message for unfollowing and following the user
+  // res.redirect('/stories')
+}))
 
 
 
