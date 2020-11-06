@@ -7,11 +7,11 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 
 const isPassword = async (password, hash) =>
-  await bcrypt.compare(password, hash);
+await bcrypt.compare(password, hash);
 const db = require('../db/models');
 const { token } = require("morgan");
 
-//USER VALIDATION CHECKER 
+//USER VALIDATION CHECKER
 const userValidator = [
   check('firstName')
     .exists({ checkFalsy: true })
@@ -56,7 +56,7 @@ const userValidator = [
     }),
 ];
 
-//LOGIN VALIDATION CHECKER 
+//LOGIN VALIDATION CHECKER
 const loginValidator = [
   check('email')
     .exists({ checkFalsy: true })
@@ -125,7 +125,7 @@ router.post(
   })
 );
 
-//LOGOUT ROUTE 
+//LOGOUT ROUTE
 
 router.get("/logout",
   asyncHandler(async (req, res, next) => {
@@ -142,7 +142,7 @@ router.post(
   })
 );
 
-//REGISTER GET AND POST ROUTE 
+//REGISTER GET AND POST ROUTE
 router.get(
   "/register",
   csrfProtection,

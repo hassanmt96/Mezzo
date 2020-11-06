@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator')
 const { asyncHandler, handleValidationErrors, csrfProtection } = require('../utils');
-const { Story, User, Like } = require('../db/models');
+const { Story, User, Like, Comment } = require('../db/models');
 
 
 const storyValidator = [
@@ -25,6 +25,35 @@ const storyValidator = [
 /* GET full story view */
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const storyId = parseInt(req.params.id);
+  const story = await Story.findByPk(storyId, {
+    include: User
+  });
+  const comments = await Comment.findAll({
+    where: { storyId }
+  });
+  console.log(comments);
+  res.render('readStory', { story, comments });
+}));
+
+router.post('/:id(\\d+)/comment', asyncHandler(async(req, res) => {
+  const storyId = parseInt(req.params.id);
+  console.log(req.body);
+  const story = await Story.findByPk(storyId, {
+    include: User
+  });
+  await Comment.create({
+    userId: res.locals.user.id,
+    storyId: req.params.id,
+    comment: req.body
+  })
+
+  const comments = await Comment.findAll({
+    where: { storyId: req.params.id }
+  });
+  res.json(comments);
+}));
+
+router.post('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const story = await Story.findByPk(storyId, { include: [ User, Like ]});
   let isLiked = false;
   story.Likes.forEach((like)=> {
