@@ -48,8 +48,8 @@ router.post('/create', csrfProtection, asyncHandler(async(req, res, next) => {
 
 
 
-//FOLLOW ROUTES GO HERE 
 
+//OBTAINING A LIST OF FOLLOWED USERS FOR ONE USER
 
 router.get("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
   const follower = await Follow.findOne({
@@ -62,6 +62,8 @@ router.get("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
   })
   res.json(follower)
 }))
+
+router.get('/')
 
 
 //GETS A LIST OF FOLLOWERS FOR A SPECIFIC USER
@@ -76,6 +78,21 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
     })
    res.json(followers)
   }))
+
+
+  router.post("/:id(\\d+)/follows", asyncHandler(async(req, res)=>{
+    const followNew = {
+      followerId: req.params.id,
+      followingId: req.body.followingId
+    }
+    const follow = follow.findOne({where: followNew})
+    const following = await User.findByPk(req.body.followingId)
+ if(req.params.id === req.body.followingId) res.status(304).render('profile')
+
+  }))
+
+  //DELETE THE FOLLOW FOR A USER
+  
 
 
 module.exports = router;
