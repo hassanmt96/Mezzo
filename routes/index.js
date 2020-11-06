@@ -30,6 +30,8 @@ router.get('/', asyncHandler(async(req, res, next) => {
   res.render('index', { stories });
 }));
 
-
+router.get('/about', asyncHandler(async(req, res) => {
+  res.render('about');
+}));
 
 module.exports = router;
