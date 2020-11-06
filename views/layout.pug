@@ -13,7 +13,9 @@ html
         a(href="/")
           img(class='logo' src='/images/Copy of mezzo..png')
       .header-nav-buttons
-        input#search(type="search" placeholder="search")
+        form(action='/stories')
+          input#search(type="search" placeholder="search" name="term" required)
+          button 🔍
 
       if !locals.authenticated
           form(action="/users/login", method="get")
@@ -34,20 +36,4 @@ html
                   li
                     a.hidden(href="/delete-a-user") Delete Account
             button#upgrade(name="upgrade") Upgrade
-          //- div.dropdown.hidden
-          //-   a.hidden(href="/create-a-story") Create Story
-          //-   a.hidden(href="/") Log Out
-          //-   a.hidden(href="/delete-a-user") Delete Account
-          //- .buttonContainer
-          //-   .dropdown.dropbtn
-          //-     img.avatar(src="/images/person-avatar-Imgur.jpg")
-          //-     .dropdowncontent
-          //-       ul
-          //-         li
-          //-           a.hidden(href="/create-a-story") Create Story
-          //-         li
-          //-           a.hidden(href="/") Log Out
-          //-         li
-          //-           a.hidden(href="/delete-a-user") Delete Account
-
   block content
