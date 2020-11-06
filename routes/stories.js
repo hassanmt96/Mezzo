@@ -51,7 +51,7 @@ router.post('/:id(\\d+)/comment', asyncHandler(async(req, res) => {
   const comments = await Comment.findAll({
     where: { storyId }
   });
-  console.log(comments)
+  // console.log(comments)
   res.json(comments);
 }));
 
