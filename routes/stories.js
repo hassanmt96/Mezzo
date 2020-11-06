@@ -28,11 +28,15 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const story = await Story.findByPk(storyId, {
     include: User
   });
+  const isFollowingId = story.User.id
+  const userId = res.locals.user.id
+  let follow = await Follow.findOne({ where: { userId, isFollowingId } })
+  
   const comments = await Comment.findAll({
     where: { storyId }
   });
   console.log(comments);
-  res.render('readStory', { story, comments });
+  res.render('readStory', { story, comments, follow });
 }));
 
 router.post('/:id(\\d+)/comment', asyncHandler(async (req, res) => {
@@ -137,29 +141,6 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
   res.json(followers)
 }))
 
-
-router.get("/:id(\\d+)/follows", asyncHandler(async (req, res) => {
-
-  const isFollowingId = req.params.id
-  const userId = res.locals.user.id
-  let follow = await Follow.findOne({ where: { userId, isFollowingId } })
-  //you cant follow yourself
-  if (parseInt(isFollowingId, 10) === parseInt(userId, 10))
-    // res.status(304)
-    res.json('same user try later')
-  else if (!follow) {
-    const newFollow = await Follow.create({
-      isFollowingId,
-      userId,
-    })
-    res.json('following')
-  } else{
-    follow.destroy()
-    res.json('unfollowed')
-  } 
-  //ajax will be used to send message for unfollowing and following the user
-  // res.redirect('/stories')
-}))
 
 //DELETE THE FOLLOW FOR A USER
 

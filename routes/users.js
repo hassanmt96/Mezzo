@@ -228,7 +228,7 @@ router.get('/:id(\\d+)/destroy', asyncHandler(async (req, res) => {
 
 
 // FOLLOWING AND UNFOLLOWING A SPECIFIC USER
-router.get("/:id(\\d+)/follows", asyncHandler(async (req, res) => {
+router.post("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
 
   const isFollowingId = req.params.id
   const userId = res.locals.user.id

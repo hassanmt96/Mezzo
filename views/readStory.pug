@@ -7,7 +7,11 @@ block content
     .userContainer
         img(src="https://w0286994blog.files.wordpress.com/2016/04/bear.jpg")
         p.author= `${story.User.firstName} ${story.User.lastName}`
-        button.btn#followBtn(type='submit') Follow
+        input(type='hidden' value=story.User.id id='authorId')
+        if follow 
+            button.btn#followBtn(type='submit') Unfollow
+        else
+            button.btn#followBtn(type='submit') Follow
     if locals.authenticated
         form(action="/stories", method="get")
             //- button.btn#deleteBtn(type='submit'href='/delete') Delete
@@ -29,3 +33,4 @@ block content
                     p=comment.comment
     script(src='/javascripts/ajax-likes.js')
     script(src='/javascripts/ajax-comments.js')
+    script(src='/javascripts/ajax-follows.js')
