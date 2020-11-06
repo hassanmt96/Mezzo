@@ -98,6 +98,8 @@
 }
 
 .commentsContainer {
+    display: grid;
+    grid-template-rows: auto;
     margin-bottom: 50px;
 }
 
