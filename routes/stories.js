@@ -36,17 +36,19 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
 }));
 
 router.post('/:id(\\d+)/comment', asyncHandler(async(req, res) => {
-  const storyId = parseInt(req.params.id);
-  console.log(req.body);
-  const story = await Story.findByPk(storyId, {
-    include: User
-  });
+  // const storyId = parseInt(req.params.id);
+  // console.log(req.body);
+  // const story = await Story.findByPk(storyId, {
+  //   include: User
+  // });
+  // console.log('test')
+  const {comment} = req.body
+  await res.json(req.body)
   await Comment.create({
     userId: res.locals.user.id,
     storyId: req.params.id,
-    comment: req.body
+    comment,
   })
-
   const comments = await Comment.findAll({
     where: { storyId: req.params.id }
   });
