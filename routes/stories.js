@@ -3,6 +3,7 @@ const router = express.Router();
 const { check } = require('express-validator')
 const { asyncHandler, handleValidationErrors, csrfProtection } = require('../utils');
 const { Story, User, Like, Comment, Follow } = require('../db/models');
+const { requireAuth } = require('../auth')
 
 
 const storyValidator = [
@@ -23,7 +24,7 @@ const storyValidator = [
 
 
 /* GET full story view */
-router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const storyId = parseInt(req.params.id);
   const story = await Story.findByPk(storyId, {
     include: User
@@ -31,7 +32,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const isFollowingId = story.User.id
   const userId = res.locals.user.id
   let follow = await Follow.findOne({ where: { userId, isFollowingId } })
-  
+
   const comments = await Comment.findAll({
     where: { storyId }
   });
@@ -72,7 +73,7 @@ router.post('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   // res.render('readStory', { story });
 }));
 
-//GIVE AND TAKE LIKES FROM A SPECIFIC USER 
+//GIVE AND TAKE LIKES FROM A SPECIFIC USER
 router.post('/:id/like', asyncHandler(async (req, res) => {
   const story = await Story.findByPk(req.params.id, { include: [User, Like] });
   let isLiked = false;
@@ -98,7 +99,7 @@ router.get('/create', csrfProtection, asyncHandler(async (req, res) => {
   res.render('storyForm', { token: req.csrfToken() });
 }));
 
-router.post('/create', asyncHandler(async (req, res, next) => {
+router.post('/create', requireAuth, asyncHandler(async (req, res, next) => {
   const newStory = await Story.create({
     title: req.body.title,
     subtitle: req.body.subtitle,
