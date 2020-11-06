@@ -77,6 +77,7 @@
 .commentForm {
     display: flex;
     padding: 0 30px 0 30px;
+    margin-bottom: 30px;
 }
 
 #commentBody {
@@ -87,6 +88,7 @@
     width: 500px;
     height: 70px;
     margin-right: 20px;
+    padding: 10px 10px;
 }
 
 #commentBody:focus::placeholder {
@@ -120,5 +122,5 @@
 	background-color: #a5fccd;
     font-size: 12pt;
     margin: 4px 4px 4px 4px;
-    justify-self: flex-end;
 }
+
