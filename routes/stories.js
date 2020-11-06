@@ -56,14 +56,13 @@ router.get("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
     where: { followingId: req.params.id },
     include: {
       model: User,
-      as: "Follower",
+      as: "follower",
       attributes: ["id", "firstName", "lastName"]
     },
   })
   res.json(follower)
 }))
 
-router.get('/')
 
 
 //GETS A LIST OF FOLLOWERS FOR A SPECIFIC USER
@@ -72,7 +71,7 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
       where: { followingId: req.params.id },
       include: {
         model: User,
-        as: "Follower",
+        as: "follower",
         attributes: ["id", "firstName", "lastName"]
       },
     })
@@ -83,7 +82,7 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
   router.post("/:id(\\d+)/follows", asyncHandler(async(req, res)=>{
     const followNew = {
       followerId: req.params.id,
-      followingId: req.body.followingId
+      followingId: req.locals.user.id
     }
     const follow = follow.findOne({where: followNew})
     const following = await User.findByPk(req.body.followingId)
@@ -93,6 +92,7 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
 
   //DELETE THE FOLLOW FOR A USER
   
+  router.get()
 
 
 module.exports = router;
