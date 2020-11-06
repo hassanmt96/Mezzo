@@ -29,17 +29,31 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
     include: User
   });
   const comments = await Comment.findAll({
-    where: storyId
+    where: { storyId }
   });
-
+  console.log(comments);
   res.render('readStory', { story, comments });
 }));
 
-router.post('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+router.post('/:id(\\d+)/comment', asyncHandler(async(req, res) => {
   const storyId = parseInt(req.params.id);
-  const story = await Story.findByPk(storyId, { include: User, Comment });
+  console.log(req.body);
+  const story = await Story.findByPk(storyId, {
+    include: User
+  });
+  await Comment.create({
+    userId: res.locals.user.id,
+    storyId: req.params.id,
+    comment: req.body
+  })
 
-  res.render('readStory', { story });
+  const comments = await Comment.findAll({
+    where: { storyId: req.params.id }
+  });
+  res.json(comments);
+}));
+
+router.post('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   const story = await Story.findByPk(storyId, { include: [ User, Like ]});
   let isLiked = false;
   story.Likes.forEach((like)=> {
