@@ -38,7 +38,7 @@ module.exports = {
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},
-        {
+        		{
 					title: "Dance in the Refrain",
 					subtitle: "How to Sing and Dance Simultaneously",
 					content:
