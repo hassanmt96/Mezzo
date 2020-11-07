@@ -17,7 +17,7 @@ router.get(`/stories`, asyncHandler(async(req, res) => {
       console.error(e);
       error = `An error ocurred that reads "${e.message}". Check the console for more details.`;
     }
-    res.render('index.pug', {//check this line check which pug file
+    res.render('index.pug', {
         listTitle: 'Search Results',
         error,
         stories
