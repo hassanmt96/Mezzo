@@ -30,10 +30,10 @@ drop down, create story, log out, delete account, categories */
 #upgrade{
     display: inline;
     width: 100px;
-	height: 33px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	height: 38px;
+	border: 1px solid rgba(240, 227, 227, 0.959);
 	border-radius: 5px;
-	background-color: #a5fccd;
+    background-color: #4af99b;
     font-size: 12pt;
     margin: 18px;
 }
@@ -156,9 +156,9 @@ drop down, create story, log out, delete account, categories */
 }
 
 .avatar{
-    margin: 16px;
-    width: 40px;
-    height: 40px;
+    margin: 15px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     display: flex-end;

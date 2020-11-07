@@ -11,9 +11,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
 			},
 			body: JSON.stringify(),
 		});
-        const isFollowed = await res.json();
-        // console.log(isFollowed)
-		if (isFollowed === "following") {
+		const isFollowed = await res.json();
+		if (isFollowed==='following') {
 			followButton.innerHTML = "Followed";
 		} else {
 			followButton.innerHTML = "Follow";
