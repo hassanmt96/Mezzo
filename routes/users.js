@@ -186,7 +186,7 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
 
 
 router.get('/:id(\\d+)/destroy', asyncHandler(async (req, res) => {
-  console.log('this is testing destroyyyyyy')
+  // console.log('this is testing destroyyyyyy')
   await logoutUser(req, res)
   const user = await User.findByPk(req.params.id)
   user.destroy()
