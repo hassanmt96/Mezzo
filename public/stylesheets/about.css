@@ -47,5 +47,30 @@
 .bioContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 50px 0 100px 0;
+    margin: 100px 100px 100px 100px;
+}
+
+.img {
+    height: 300px;
+    width: 300px;
+}
+
+.bio {
+    padding: 0 30px 0 30px;
+}
+
+.name {
+    font-size: 18pt;
+}
+
+.link {
+    text-decoration: none;
+  }
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link:active {
+    text-decoration: underline;
 }
