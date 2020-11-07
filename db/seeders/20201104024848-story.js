@@ -6,11 +6,11 @@ module.exports = {
 			"Stories",
 			[
 				{
-					title: "Composing For Household Objects",
-					subtitle: "Combatting classicism and erasure in western classical music",
+					title: "",
+					subtitle: "",
 					content:
-						"As a classical percussionist I’ve noticed how accessibility is perceived as novel or juvenile in academia. I’ve decided to start composing works for solo percussion using everyday objects (instead of the large, expensive gear students can use while they’re in university. After students graduate they often don’t have access to any instruments. This is my way of addressing classicism in classical percussion.) I set the music to text by writers of marginalized voices (to combat the erasure of nonwhite+nonman narratives in classical music). \n \n Salina Kuo is a Philadelphia-based person (settler of Lenape territory) interested in accessibility for music performance + music education. She opposes accessibility's \"novel\" reputation, and seeks to create nuanced, meaningful art from simplicity. She composes theatrical works for found objects, and releases pop music as St. John's Wort. \n \n She holds a B.M. in music education from Temple University. There she studied orchestral reportoire, jazz vibraphone, latin percussion, and drumset. She teaches elementary + middle school general music, private drumset + piano lessons, and volunteers with Girls Rock Philly. She recently performed at the Oh My Ears New Music Festival, Toronto Creative Music Lab, and Steve Weiss Mallet Festival.",
-					authorId: 1,
+						"",
+					authorId: 2,
 					image:
 						"https://cdn11.bigcommerce.com/s-8wy6p2/images/stencil/1500x1000/uploaded_images/article.png?t=1575561837",
 					createdAt: new Date(),
@@ -20,8 +20,8 @@ module.exports = {
 					title: "Why the Trumpet is the World's Greatest Instrument",
 					subtitle: "The answer may suprise you!",
 					content:
-						"words words words words words words words words words words words words words words words words words words words words words words words words",
-					authorId: 1,
+					"The trumpet has made it's mark on culture for thousands of years. It has been used to send signals and warnings in early civilization, to herald Royalty in medieval times, and it even features heavily in the Book of Revelations. Like all genius ideas, it has endured the test of time. It has taken many forms over the years, from ancient animal horns used by vikings, to the Buisine, to the addition valves, to it's modern day look pictured above. It takes a high level of skill and breath control to utilize properly. Each potential fingering combination can produce 9 different notes! Only the musician's breath control and embouchure can ensure that the proper tone is played; and that it sounds crisp, clear, and at the appropriate volume. As a result, only the most disciplined students can claim that they have truly mastered the art of playing it. Some say that this causes trumpet players to develop a bit of an 'Ego'. This author disagrees.",
+					authorId: 2,
 					image:
 						"https://abeautifultrenchitwas.com/wp-content/uploads/trumpet-perspective.jpg",
 					createdAt: new Date(),
