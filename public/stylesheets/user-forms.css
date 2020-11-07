@@ -41,7 +41,7 @@ body {
 	border-radius: 5px;
 	padding: 20px;
 	margin-bottom: 50px;
-	background-color: white;
+	background-color: #36454F;
 	width: 600px;
 	height: 750px;
 	display: flex;
@@ -58,6 +58,40 @@ body {
 	justify-content: center;
 }
 
+.user-form-link {
+	padding-top: 10px;
+	text-align: center;
+}
+
+.user-warning-label {
+	padding: 20px;
+	text-align: center;
+}
+
+.warning-button {
+	width: 150px;
+	height: 33px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-color: #DF0000;
+	font-size: 12pt;
+}
+
+.user-warning-field {
+	padding: 5px 10px 10px 0px;
+	display: flex;
+	justify-content: center;
+	height: 50px;
+}
+
+.warning-text {
+	padding: 5px;
+	text-align: center;
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid black;
+	border-radius: 3px;
+}
 
 .user-form-holder {
 	display: flex;
@@ -90,6 +124,7 @@ body {
 	border: 1px solid black;
 	border-radius: 3px;
 	height: auto;
+	background-color: #a5fccd
 }
 
 .user-button {
@@ -141,4 +176,8 @@ body {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+}
+
+label{
+	color: #a5fccd;
 }

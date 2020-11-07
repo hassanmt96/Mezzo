@@ -2,7 +2,7 @@ const express = require("express");
 const { check, validationResult } = require("express-validator");
 const { User, Follow } = require("../db/models");
 const { asyncHandler, csrfProtection, handleValidationErrors, } = require("../utils");
-const { loginUser, logoutUser } = require("../auth");
+const { loginUser, logoutUser, requireAuth } = require("../auth");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
@@ -184,13 +184,25 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
 
 }));
 
+router.get('/confirm-delete', requireAuth, (req, res) => {
+  res.render('confirmDeleteForm')
+})
 
-router.get('/:id(\\d+)/destroy', asyncHandler(async (req, res) => {
-  console.log('this is testing destroyyyyyy')
-  await logoutUser(req, res)
-  const user = await User.findByPk(req.params.id)
-  user.destroy()
-  res.redirect('/')
+
+router.post('/:id(\\d+)/destroy', asyncHandler(async (req, res) => {
+  // console.log('this is testing destroyyyyyy')
+  const user = await User.findByPk(res.locals.user.id)
+  let errors = [];
+  const { password } = req.body
+  const isPassword = await bcrypt.compare(password, user.password.toString())
+  if (isPassword) {
+    await logoutUser(req, res)
+    await user.destroy()
+    res.redirect('/')
+  } else {
+    errors.push('Incorrect password')
+    res.render('confirmDeleteForm', {errors})
+  }
 
 }))
 

@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Story = sequelize.define(
+	const Story = sequelize.define(
 		"Story",
 		{
 			title: {
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 			authorId: {
 				type: DataTypes.INTEGER,
 				allowNull: false,
-				references: { model: 'Users' }
+				references: { model: "Users" },
 			},
 			image: {
 				type: DataTypes.TEXT,
@@ -27,10 +27,18 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{}
 	);
-  Story.associate = function(models) {
-    Story.belongsTo(models.User, {foreignKey: "authorId"})
-    Story.hasMany(models.Like, {foreignKey: "storyId"})
-    Story.hasMany(models.Comment, {foreignKey: "storyId"})
-  };
-  return Story;
+	Story.associate = function (models) {
+		Story.belongsTo(models.User, { foreignKey: "authorId" });
+		Story.hasMany(models.Like, {
+			foreignKey: "storyId",
+			onDelete: "cascade",
+			hooks: true,
+		});
+		Story.hasMany(models.Comment, {
+			foreignKey: "storyId",
+			onDelete: "cascade",
+			hooks: true,
+		});
+	};
+	return Story;
 };
