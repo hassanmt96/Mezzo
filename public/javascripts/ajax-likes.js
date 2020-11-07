@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 			body: JSON.stringify(),
 		});
 		const isLiked = await res.json();
-		if (isLiked) {
+		if (!isLiked) {
 			likeButton.innerHTML = "Liked";
 		} else {
 			likeButton.innerHTML = "Like";

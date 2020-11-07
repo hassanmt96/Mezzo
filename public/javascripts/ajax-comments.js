@@ -8,18 +8,21 @@ window.addEventListener('DOMContentLoaded', (e) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						// "Accept": "application/json",
 					},
 					body: JSON.stringify({comment: comment})
 				});
         const jsonRes = await res.json();
-        console.log(jsonRes);
         const comments = document.getElementById('comments');
         let commentsHtml = [];
         const returnedComments = Array.from(jsonRes)
-        // console.log(returnedComments)
         returnedComments.forEach((comment) => {
-            let html = `<p>${comment.comment}</p>`
+            let html = `
+            <div id='comments'>
+                <div class='comment'>
+                    <p>${comment.comment}</p>
+                    <p class='commentDate'>Posted ${comment.createdAt}</p>
+                </div>
+            </div>`
             commentsHtml.push(html);
         });
         comments.innerHTML = ''

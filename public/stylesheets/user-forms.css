@@ -40,9 +40,10 @@ body {
 	border: 1px solid black;
 	border-radius: 5px;
 	padding: 20px;
+	margin-bottom: 50px;
 	background-color: white;
 	width: 600px;
-	height: 650px;
+	height: 750px;
 	display: flex;
 	justify-content: center;
 }

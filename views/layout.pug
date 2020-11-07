@@ -8,34 +8,35 @@ html
       link(rel='stylesheet' href='/stylesheets/logged-in-nav-bar.css')
       link(rel='stylesheet' href='/stylesheets/home-feed.css')
       link(rel='stylesheet' href='/stylesheets/read-story.css')
+      link(rel='stylesheet' href='/stylesheets/about.css')
   body
     .header-nav-bar
       .header-nav-logo
         a(href="/")
           img(class='logo' src='/images/Copy of mezzo..png')
       .header-nav-buttons
-        form(action='/stories')
+        form.search(action='/stories')
           input#search(type="search" placeholder="search" name="term" required)
-          button 🔍
-
+          button#searchBtn 🔍
+      form(action="/about", method="get")
+        button.header-nav-buttons#about(href='/about') About
       if !locals.authenticated
-          .header-stuff-buttons
-            form(action="/users/login", method="get")
-              button.header-nav-buttons#login(href='/users/login') Login
-            form(action="/users/register", method="get")
-              button.header-nav-buttons#register(href='/users/register') Register
-
+        form(action="/users/login", method="get")
+          button.header-nav-buttons#login(href='/users/login') Login
+        form(action="/users/register", method="get")
+          button.header-nav-buttons#register(href='/users/register') Register
       else
-          .buttonContainer
-            .dropdown.dropbtn
-              img.avatar(src="/images/person-avatar-Imgur.jpg")
-              .dropdowncontent
-                ul
-                  li
-                    a.hidden(href="/stories/create") Create Story
-                  li
-                    a.hidden(href="/users/logout") Log Out
-                  li
-                    a.hidden(href=`/users/${locals.user.id}/destroy`) Delete Account
-            button#upgrade(name="upgrade") Upgrade
+        button#upgrade(name="upgrade") Upgrade
+        .buttonContainer
+          .dropdown.dropbtn
+            img.avatar(src="/images/person-avatar-Imgur.jpg")
+            .dropdowncontent
+              ul
+                li
+                  a.hidden(href="/stories/create") Create Story
+                li
+                  a.hidden(href="/users/logout") Log Out
+                li
+                  a.hidden(href=`/users/${locals.user.id}/destroy`) Delete Account
+
   block content

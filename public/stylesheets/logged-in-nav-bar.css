@@ -4,7 +4,7 @@ drop down, create story, log out, delete account, categories */
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-    padding: 0px 4px;
+    padding: 0px 200px;
     line-height: 70px;
     font-size: 18px;
 }
@@ -35,7 +35,17 @@ drop down, create story, log out, delete account, categories */
 	border-radius: 5px;
 	background-color: #a5fccd;
     font-size: 12pt;
-    margin: 4px 4px 4px 4px;
+    margin: 18px;
+}
+
+#upgrade:hover {
+    display: inline;
+    border-radius: 3px;
+    border: 0;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    margin: 18px;
 }
 
 #register{
@@ -68,10 +78,30 @@ drop down, create story, log out, delete account, categories */
 	background-color: #a5fccd;
     font-size: 12pt;
     margin: 4px 4px 4px 4px;
-    /* padding-right: 20px; */
 }
 
 #login:hover{
+    display: inline;
+    border-radius: 3px;
+    border: 0;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    margin: 4px 4px 4px 4px;
+}
+
+#about{
+    display: inline;
+    width: 100px;
+	height: 33px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-color: #a5fccd;
+    font-size: 12pt;
+    margin: 4px 4px 4px 4px;
+}
+
+#about:hover{
     display: inline;
     border-radius: 3px;
     border: 0;
@@ -91,7 +121,32 @@ drop down, create story, log out, delete account, categories */
     font-size: 16px;
     color: black;
     text-decoration: none;
-    width: 300px;
+    height: 33px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+}
+
+.search{
+    display: flex;
+    margin-top: 18px;
+}
+
+#searchBtn {
+    display: inline;
+    width: 33px;
+    height: 33px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 12pt;
+}
+
+#searchBtn:hover {
+    display: inline;
+    border-radius: 3px;
+    border: 0;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
 }
 
 .avatarcontainer{
@@ -101,9 +156,9 @@ drop down, create story, log out, delete account, categories */
 }
 
 .avatar{
-    margin: 5px;
-    width: 50px;
-    height: 50px;
+    margin: 16px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     display: flex-end;
