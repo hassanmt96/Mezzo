@@ -15,9 +15,9 @@ module.exports = {
 				updatedAt: new Date(),
 			},
 			{
-				firstName: "Demotwo",
-				lastName: "Usertwo",
-				email: "demotwo@usertwo.com",
+				firstName: "Jane",
+				lastName: "Doe",
+				email: "jane@doe.com",
 				password: hashTwo,
 				createdAt: new Date(),
 				updatedAt: new Date(),
