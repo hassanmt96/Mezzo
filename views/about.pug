@@ -1,2 +1,30 @@
 extends layout.pug
-    header
+
+block content
+    .layout
+        .container
+            h1#header Every idea needs a medium, and we prefer music.
+            p#description Based off the blog-hosting site "Medium," Mezzo allows professional and undiscovered musicians, as well as music listeners, to share their experiences in music-making, education, and industry. We reject the idea that formal training denotes a larger part to play, and encourage all voices to deepen our musical knowledge and connnection as a community.
+            form(action="https://github.com/sal-wav/Mezzo" method="GET")
+                button#githubRepo(href="https://github.com/sal-wav/Mezzo") Mezzo Repository On Github
+        .bioContainer
+            .person
+                img.img#safiya(src="/images/safiya.jpg")
+                .bio
+                    p.name Safiya Cain
+                    a.link(href="https://github.com/Scain3") Safiya's Github
+            .person
+                img.img(src="/images/salina.jpg")
+                .bio
+                    p.name Salina Kuo
+                    a.link(href="https://github.com/sal-wav/") Salina's Github
+            .person
+                img.img(src="/images/jake.png")
+                .bio
+                    p.name Jake Grooms
+                    a.link(href="https://github.com/j-grooms") Jake's Github
+            .person
+                img.img(src="/images/hassan.jpg")
+                .bio
+                    p.name Hassan Tariq
+                    a.link(href="https://github.com/hassanmt96") Hassan's Github

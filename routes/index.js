@@ -6,6 +6,7 @@ const { Story, Follow, User } = require('../db/models');
 
 
 /* GET home page/feed */
+/* beginning code for following feed stretch code */
 router.get('/', asyncHandler(async(req, res, next) => {
   const stories = await Story.findAll({ order: [['title', 'ASC']]});
   // const userId = res.locals.user.id;
@@ -29,6 +30,8 @@ router.get('/', asyncHandler(async(req, res, next) => {
   res.render('index', { stories });
 }));
 
-
+router.get('/about', asyncHandler(async(req, res) => {
+  res.render('about');
+}));
 
 module.exports = router;
