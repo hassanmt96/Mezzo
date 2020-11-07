@@ -48,12 +48,12 @@ module.exports = {
 					title: "Get into the Groove, Elevate your Mood",
 					subtitle: "Music for your Mental Health",
 					content:
-						`In this article, I will discuss the benefits that listening to music has for managing mental health. Research shows that when listening
-						to music, cortisol levels in the blood decrease. Cortisol is the most well known stress hormone in the body. High levels of cortisol in
-						the body have been know to affect every system within the body supplying an additional risk factor for chronic disease. Along with decreasing
-						 cortisol levels, listening to music has also been know to help increase serotonin levels. Serotonin is a well-known mood regulator that is believed
-						to contribute to the feeling of happiness. Music is not a treatment for mental health nor a substitute for prescribed medication for any
-						diagnosis, however listening to music does help in maintaing mental health balance.`,
+						`In this article, I will discuss the benefits that listening to music has for managing mental health. Research shows that listening
+						to music decreases cortisol levels in the blood. Cortisol is the most well known stress hormone in the body. High levels of cortisol in
+						the blood stream have been known to affect every system within the body supplying an additional risk factor for chronic disease. Along with decreasing
+						 cortisol levels, listening to music has also been known to help increase serotonin levels. Serotonin is a well-known mood regulator hormone that is believed
+						to contribute to the feeling of happiness and decreased episodes of depression. Music is not a treatment for mental health nor a substitute for prescribed medication for any
+						health or mental health diagnosis, however listening to music does help in maintaining mental health balance.`,
 					authorId: 2,
 					image:
 						"https://media.giphy.com/media/H6ubTDWpYXEDJqYE4D/giphy.gif",
