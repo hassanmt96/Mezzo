@@ -150,12 +150,6 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
 }))
 
 
-//DELETE THE FOLLOW FOR A USER
-
-
-//  if(followingId === isFollowingId) res.status(304).render('profile')
-//     const follow = follow.findOne({where: followNew})
-//     const following = await User.findByPk(req.body.followingId)
 
 
 
@@ -163,8 +157,3 @@ router.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
 module.exports = router;
 
 
-//COMMENTS GO HERE
-
-//LIKES GO HERE
-
-//FOLLOW ROUTE GOES HERE
