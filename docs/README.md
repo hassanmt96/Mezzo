@@ -1,11 +1,4 @@
 # Mezzo
-<!-- Brief explanation of what the app is and does
-Link to live site
-Link to wiki docs -->
-Discussion of technologies used
-Discussion of two features that show off the team's technical abilities
-Discussion of both challenges faced and the way the team solved them
-Code snippets to highlight the best code
 
 ## What We Are
 
@@ -28,35 +21,37 @@ There are quite a few code snippets that we are all very proud of working on. It
 ### This code showcases our follow functionality. It is able to both create and destroy the follow instance based on whether the current user is already following the author or not.
 
 ```js
-router.post("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
+router.post(
+	"/:id(\\d+)/follow",
+	asyncHandler(async (req, res) => {
+		const isFollowingId = req.params.id;
 
-  const isFollowingId = req.params.id
+		// res.locals was great for getting user information,
+		// and we used it extensively throughout the project.
+		const userId = res.locals.user.id;
 
-  // res.locals was great for getting user information,
-  // and we used it extensively throughout the project.
-  const userId = res.locals.user.id
-
-
-  let follow = await Follow.findOne({ where: { userId, isFollowingId } })
-  // we had to parse the inputs here as the database would interpret them as strings
-  if (parseInt(isFollowingId, 10) === parseInt(userId, 10))
-  // check if the user is attempting to follow themselves
-    res.json('same user try later')
-    // If not follow exists in our database create a new one
-  else if (!follow) {
-    const newFollow = await Follow.create({
-      isFollowingId,
-      userId,
-    })
-    res.json('following')
-  } else {
-    // If the follow already exists, we need to destroy it to allow
-    // the user to un-follow authors
-    follow.destroy()
-    res.json('unfollowed')
-  }
-}))
+		let follow = await Follow.findOne({ where: { userId, isFollowingId } });
+		// we had to parse the inputs here as the database would interpret them as strings
+		if (parseInt(isFollowingId, 10) === parseInt(userId, 10))
+			// check if the user is attempting to follow themselves
+			res.json("same user try later");
+		// If not follow exists in our database create a new one
+		else if (!follow) {
+			const newFollow = await Follow.create({
+				isFollowingId,
+				userId,
+			});
+			res.json("following");
+		} else {
+			// If the follow already exists, we need to destroy it to allow
+			// the user to un-follow authors
+			follow.destroy();
+			res.json("unfollowed");
+		}
+	})
+);
 ```
+The follow functionality was particularly challenging and required a many-to-many relationship within the same table. It required a revamp of our associations, and took quite a while to get working fully.
 
 ### Here is a snippet of our likes API endpoint
 
@@ -64,33 +59,62 @@ router.post("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
 // Much like our follow functionality, this allows us to check if an article is already liked by a user
 // We can create and destroy with this method, and the server will return a true/false value
 // after taking the appropriate action. Very useful for our front-end
-router.post('/:id/like', asyncHandler(async (req, res) => {
-  const story = await Story.findByPk(req.params.id, { include: [User, Like] });
-  let isLiked = false;
-  const storyId = req.params.id;
-  const userId = res.locals.user.id;
-  story.Likes.forEach((like) => {
-    const { userId } = like;
-    if (userId === res.locals.user.id) {
-      isLiked = true;
-    }
-  })
-  if (!isLiked) {
-    await Like.create({ storyId, userId });
-  } else {
-    let likes = await Like.findOne({ where: { storyId: req.params.id, userId: res.locals.user.id } });
-    await likes.destroy();
-  }
-  // Simple true or false that allows the AJAX to update the button accordingly
-  res.json(isLiked);
-}))
+router.post(
+	"/:id/like",
+	asyncHandler(async (req, res) => {
+		const story = await Story.findByPk(req.params.id, {
+			include: [User, Like],
+		});
+		let isLiked = false;
+		const storyId = req.params.id;
+		const userId = res.locals.user.id;
+		story.Likes.forEach((like) => {
+			const { userId } = like;
+			if (userId === res.locals.user.id) {
+				isLiked = true;
+			}
+		});
+		if (!isLiked) {
+			await Like.create({ storyId, userId });
+		} else {
+			let likes = await Like.findOne({
+				where: { storyId: req.params.id, userId: res.locals.user.id },
+			});
+			await likes.destroy();
+		}
+		// Simple true or false that allows the AJAX to update the button accordingly
+		res.json(isLiked);
+	})
+);
 ```
+This was a fun piece of code to design because once we wrapped our heads around how to implement it, we realized how easy we could make our lives by simplyfying the server response as much as possible. A challenge and a lesson, all in one!
+
 
 ### This is a snippet showing how we incorporated our styling into our comments AJAX
 
 ```js
-
+const jsonRes = await res.json();
+const comments = document.getElementById("comments");
+let commentsHtml = [];
+const returnedComments = Array.from(jsonRes);
+returnedComments.forEach((comment) => {
+    // By declaring our classes and id's below, we are able to programatically
+    // generate these HTML elements with css styling pre-applied!
+	let html = `
+            <div id='comments'>
+                <div class='comment'>
+                    <p>${comment.comment}</p>
+                    <p class='commentDate'>Posted ${comment.createdAt}</p>
+                </div>
+            </div>`;
+	commentsHtml.push(html);
+});
+comments.innerHTML = "";
+// This overwrites the current comment content, and replaces it with the updated, styled list.
+comments.innerHTML = commentsHtml.join("");
 ```
+The full version of the above AJAX function and the associated API endpoint took the better part of the day, and several people to even get it working! Once we figured out the syntax, it was a breeze to implement our existing styling on those created tags.
+
 
 You can view details about all of this and more, on [our wiki](https://github.com/sal-wav/Mezzo/wiki)!
 
