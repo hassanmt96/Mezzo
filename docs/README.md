@@ -9,7 +9,7 @@ Code snippets to highlight the best code
 
 ### What We Are
 
-Mezzo is **the** destination for musicians to share their personal experiences with music and the industry. After signing up, users can create articles to share their expeiences with our easy-to-use form. Users can also comment on stories to share their thoughts, follow their favorite authors, and even show support by liking the articles! It is a clone of the popular site, Medium.
+Mezzo is **the** destination for professional and undiscovered musicians, as well as music listeners to share their personal experiences with music and the industry. After signing up, users can create articles to share their expeiences with our easy-to-use form. Users can also comment on stories to share their thoughts, follow their favorite authors, and even show support by liking the articles! It is a clone of the popular site, Medium.
 
 ### Technologies Used
 
@@ -17,6 +17,11 @@ Mezzo's server is built on the popular framework, Express. We have a PostgreSQL 
 
 All of our HTML is generated with Pug templates. Our Pug templates are dynamic, and allow the user to tell at a glance if they have previously liked a story or followed another user. With AJAX requests, our users are able to like, follow, and even make comments, all without refreshing the webpage. These are post requests sent to specific API points that can update the database, and send back usable json for the javascript to use. This allows it to update the page in real time.
 
+### Feature Showcase
+
+Our team has worked very hard to craft this website. We started our coding journey just a few short months ago, and this is a culmination of all of our efforts to date.
+
+As new programmers in our very first unguided group setting, it was a challenge to conceptualize how to build out all of these features. Working together introduced a whole new set of challenges, such as reviewing major features that we had little to no part in writing.  It was also very hard to tell how long all of these things would take, and how many features we would be able to integrate overall. This is by no means a finished product, and we are all passionate about continuing to add functionality, styling, and otherwise upgrading the app to showcase our skills.
 
 You can view details about all of this and more, on [our wiki](https://github.com/sal-wav/Mezzo/wiki)!
 
