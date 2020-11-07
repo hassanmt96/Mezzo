@@ -197,7 +197,7 @@ router.post('/:id(\\d+)/destroy', asyncHandler(async (req, res) => {
   const isPassword = await bcrypt.compare(password, user.password.toString())
   if (isPassword) {
     await logoutUser(req, res)
-    user.destroy()
+    await user.destroy()
     res.redirect('/')
   } else {
     errors.push('Incorrect password')

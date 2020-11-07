@@ -6,13 +6,13 @@ block content
             +validationErrorSummary(errors)
         .user-form-div
             form.user-form(action= `/users/${locals.user.id}/destroy` method="POST")
-                .user-label
+                .user-warning-label
                     Label Enter your password below:
-                .user-field
+                .user-warning-field
                     input.user-input(type="text" name="password" required)
                 .user-button
-                    button(type="submit")
+                    button.warning-button(type="submit") Delete Account
                 .warning-text
-                    p WARNING: This action will erase all data associated with the account, and is not reversible!
-                div
+                    p This action will erase all account data, and is not reversible!
+                div.user-form-link
                     a(href="/") Cancel

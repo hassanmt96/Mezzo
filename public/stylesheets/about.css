@@ -22,6 +22,11 @@
     font-size: 20pt;
 }
 
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 #githubRepo {
     width: 300px;
 	height: 70px;
@@ -29,7 +34,7 @@
 	border-radius: 5px;
 	background-color: #a5fccd;
     font-size: 15pt;
-    margin: 0 auto;
+    grid-column-start: 2;
     color: black
 }
 
@@ -41,7 +46,6 @@
 	background-color: black;
     font-size: 15pt;
     color: white;
-    margin: 0 auto;
 }
 
 .bioContainer {
