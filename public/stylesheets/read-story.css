@@ -91,6 +91,7 @@
     height: 70px;
     margin-right: 20px;
     padding: 10px 10px;
+    resize: none;
 }
 
 #commentBody:focus::placeholder {
