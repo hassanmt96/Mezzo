@@ -56,7 +56,7 @@ module.exports = {
 						diagnosis, however listening to music does help in maintaing mental health balance.`,
 					authorId: 2,
 					image:
-						"https://media.giphy.com/media/ZtMkorgeyRu5q/giphy.gif",
+						"https://media.giphy.com/media/H6ubTDWpYXEDJqYE4D/giphy.gif",
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				}
