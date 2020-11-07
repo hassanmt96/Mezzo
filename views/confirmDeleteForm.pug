@@ -5,4 +5,14 @@ block content
         div
             +validationErrorSummary(errors)
         .user-form-div
-            form(action= "/users/")
+            form.user-form(action= `/users/${locals.user.id}/destroy` method="POST")
+                .user-label
+                    Label Enter your password below:
+                .user-field
+                    input.user-input(type="text" name="password" required)
+                .user-button
+                    button(type="submit")
+                .warning-text
+                    p WARNING: This action will erase all data associated with the account, and is not reversible!
+                div
+                    a(href="/") Cancel
