@@ -215,8 +215,6 @@ router.post("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
     follow.destroy()
     res.json('unfollowed')
   }
-  //ajax will be used to send message for unfollowing and following the user
-  // res.redirect('/stories')
 }))
 
 

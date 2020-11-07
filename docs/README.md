@@ -1,4 +1,4 @@
-## Mezzo
+# Mezzo
 <!-- Brief explanation of what the app is and does
 Link to live site
 Link to wiki docs -->
@@ -7,21 +7,90 @@ Discussion of two features that show off the team's technical abilities
 Discussion of both challenges faced and the way the team solved them
 Code snippets to highlight the best code
 
-### What We Are
+## What We Are
 
 Mezzo is **the** destination for professional and undiscovered musicians, as well as music listeners to share their personal experiences with music and the industry. After signing up, users can create articles to share their expeiences with our easy-to-use form. Users can also comment on stories to share their thoughts, follow their favorite authors, and even show support by liking the articles! It is a clone of the popular site, Medium.
 
-### Technologies Used
+## Technologies Used
 
 Mezzo's server is built on the popular framework, Express. We have a PostgreSQL database, which the server manages utilizing Sequelize. Our user sessions are handled using the npm package express-session, which easily allows us to authenticate users, log them out, and protect routes that we do not want guests to have access to, such as the full stories. Our front-end consists of Pug templates, hand-styled css, and javascript.
 
 All of our HTML is generated with Pug templates. Our Pug templates are dynamic, and allow the user to tell at a glance if they have previously liked a story or followed another user. With AJAX requests, our users are able to like, follow, and even make comments, all without refreshing the webpage. These are post requests sent to specific API points that can update the database, and send back usable json for the javascript to use. This allows it to update the page in real time.
 
-### Feature Showcase
+## Feature Showcase
 
 Our team has worked very hard to craft this website. We started our coding journey just a few short months ago, and this is a culmination of all of our efforts to date.
 
-As new programmers in our very first unguided group setting, it was a challenge to conceptualize how to build out all of these features. Working together introduced a whole new set of challenges, such as reviewing major features that we had little to no part in writing.  It was also very hard to tell how long all of these things would take, and how many features we would be able to integrate overall. This is by no means a finished product, and we are all passionate about continuing to add functionality, styling, and otherwise upgrading the app to showcase our skills.
+As new programmers in our very first unguided group setting, it was a challenge to conceptualize how to build out all of these features. Working together introduced a whole new set of challenges, such as reviewing major features that we had little to no part in writing. We all learned how to properly integrate parts of each other's code, and make it work seamlessly. It was also very hard to tell how long all of these things would take, and how many features we would be able to integrate overall. This is by no means a finished product, and we are all passionate about continuing to add functionality, styling, and otherwise upgrading the app to showcase our skills.
+
+There are quite a few code snippets that we are all very proud of working on. It was hard to narrow it down, but here are some highlights from the project.
+
+### This code showcases our follow functionality. It is able to both create and destroy the follow instance based on whether the current user is already following the author or not.
+
+```js
+router.post("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
+
+  const isFollowingId = req.params.id
+
+  // res.locals was great for getting user information,
+  // and we used it extensively throughout the project.
+  const userId = res.locals.user.id
+
+
+  let follow = await Follow.findOne({ where: { userId, isFollowingId } })
+  // we had to parse the inputs here as the database would interpret them as strings
+  if (parseInt(isFollowingId, 10) === parseInt(userId, 10))
+  // check if the user is attempting to follow themselves
+    res.json('same user try later')
+    // If not follow exists in our database create a new one
+  else if (!follow) {
+    const newFollow = await Follow.create({
+      isFollowingId,
+      userId,
+    })
+    res.json('following')
+  } else {
+    // If the follow already exists, we need to destroy it to allow
+    // the user to un-follow authors
+    follow.destroy()
+    res.json('unfollowed')
+  }
+}))
+```
+
+### Here is a snippet of our likes API endpoint
+
+```js
+// Much like our follow functionality, this allows us to check if an article is already liked by a user
+// We can create and destroy with this method, and the server will return a true/false value
+// after taking the appropriate action. Very useful for our front-end
+router.post('/:id/like', asyncHandler(async (req, res) => {
+  const story = await Story.findByPk(req.params.id, { include: [User, Like] });
+  let isLiked = false;
+  const storyId = req.params.id;
+  const userId = res.locals.user.id;
+  story.Likes.forEach((like) => {
+    const { userId } = like;
+    if (userId === res.locals.user.id) {
+      isLiked = true;
+    }
+  })
+  if (!isLiked) {
+    await Like.create({ storyId, userId });
+  } else {
+    let likes = await Like.findOne({ where: { storyId: req.params.id, userId: res.locals.user.id } });
+    await likes.destroy();
+  }
+  // Simple true or false that allows the AJAX to update the button accordingly
+  res.json(isLiked);
+}))
+```
+
+### This is a snippet showing how we incorporated our styling into our comments AJAX
+
+```js
+
+```
 
 You can view details about all of this and more, on [our wiki](https://github.com/sal-wav/Mezzo/wiki)!
 
