@@ -9,6 +9,7 @@ html
       link(rel='stylesheet' href='/stylesheets/home-feed.css')
       link(rel='stylesheet' href='/stylesheets/read-story.css')
       link(rel='stylesheet' href='/stylesheets/about.css')
+      link(rel='stylesheet' href='/stylesheets/premium.css')
   body
     .header-nav-bar
       .header-nav-logo
@@ -26,7 +27,8 @@ html
         form(action="/users/register", method="get")
           button.header-nav-buttons#register(href='/users/register') Register
       else
-        button#upgrade(name="upgrade") Upgrade
+        form(action="/users/upgrade", method='get')
+            button#upgrade(href="/users/upgrade") Upgrade
         .buttonContainer
           .dropdown.dropbtn
             img.avatar(src="/images/person-avatar-Imgur.jpg")
