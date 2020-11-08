@@ -7,6 +7,7 @@ drop down, create story, log out, delete account, categories */
     padding: 0px 200px;
     line-height: 70px;
     font-size: 18px;
+    background-color: #36454F;
 }
 
 .header-stuff-buttons{
@@ -33,7 +34,7 @@ drop down, create story, log out, delete account, categories */
 	height: 38px;
 	border: 1px solid rgba(240, 227, 227, 0.959);
 	border-radius: 5px;
-    background-color: #4af99b;
+    background-color: #a5fccd;
     font-size: 12pt;
     margin: 18px;
 }

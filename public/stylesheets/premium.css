@@ -1,7 +1,3 @@
-.header-nav-bar{
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
 
 
 .intro-to-premium {
@@ -10,30 +6,36 @@
     height: 464px;
     left: 0px;
     top: 0px;
-    background: #4af99b;
+    background: #a5fccd;
     border-color:cornsilk;
     border-style: solid;
 
 }
 
+/* .upgrade-container {
+    height: 700px;
+} */
+
+.imgContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 img#upgrade23{
-    /* position: relative; */
+    padding-top: 10px;
+    grid-column-start: 2;
     color: #000;
     font-size: 7.3vw;
-    margin: 0 auto;
-    /* margin-left: auto; */
-    /* margin-right:auto; */
-    top: 125px;
 }
 
 #reading{
     position: absolute;
     margin-left: 500px;
-    margin-top: 40px;
+    margin-top: 37px;
 }
 
 img#jukebox{
-    margin-top:50px;
+    margin-top:49px;
 }
 
 
@@ -53,7 +55,7 @@ h3#upgrade2{
     height: 150px;
     display: grid;
     grid-template-columns: auto auto;
-    background-color: #4af99b;
+    background-color: #a5fccd;
     border-color: cornsilk;
     text-align: center;
 }
@@ -65,19 +67,23 @@ h3#upgrade2{
 
 h2#upgrade3{
     font-weight: 100px;
+    padding-top: 25px;
 }
 
+#upgrade4 {
+    padding-top: 25px;
+}
 
 
 .user-recommendations{
     border-style: solid;
     height:300px;
     border-color: blanchedalmond;
-    background-color: #4af99b;
+    background-color: #36454F;
     text-align: center;
+    color: white
 }
 
 /* Get the most from Mezzo. */
 
 /* Rectangle 9 */
-
