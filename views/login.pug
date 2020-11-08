@@ -17,5 +17,8 @@ block content
                     input(type='password' name='password' required class="user-input")
                 .user-button
                     button(type='submit' class="login-button") Log in
+                .user-button
                 div
                     a.userLink(href='/users/register') Already have an account?
+            form(action="/users/demouser", method="post")
+                    button(type='submit' class) Continue as Demo User
