@@ -10,13 +10,13 @@ module.exports = {
 			},
 			userId: {
 				type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {model: "Users"}
+        		allowNull: false,
+        		references: {model: "Users"}
 			},
 			storyId: {
 				type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {model: "Stories"}
+        		allowNull: false,
+        		references: {model: "Stories"}
 			},
 			createdAt: {
 				allowNull: false,
