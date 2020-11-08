@@ -244,6 +244,12 @@ router.post("/:id(\\d+)/follow", asyncHandler(async (req, res) => {
 }))
 
 
+router.get('/demouser', asyncHandler(async(req, res)=>{
+  req.session.auth = { userId: 1 };
+  res.redirect('/');
+
+}))
+
 
 module.exports = router;
 
